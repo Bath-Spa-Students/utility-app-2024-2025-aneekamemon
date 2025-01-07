@@ -471,10 +471,10 @@ rates = {
 }
 
 ChocolateBars =  {
-        "SC1": {"price": 3.50},
-        "SC2": {"price": 2.50},
-        "SC3": {"price": 2.00},
-        "SC4": {"price": 1.99},
+        "SC1": {"price": 3.50, "stock" : 7 },
+        "SC2": {"price": 2.50, "stock" : 4 },
+        "SC3": {"price": 2.00, "stock" : 10 },
+        "SC4": {"price": 1.99, "stock" : 9 },
 }
 
 def chocolateBar_snacks_1USD():
@@ -505,13 +505,16 @@ def chocolateBar_snacks_1USD():
         convertedcurrency = {}
         for code, details in ChocolateBars.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m SC1 \033[0m        \033[1;7;36;96m Snickers \033[0m       \033[1;7;32;92m {convertedcurrency['SC1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 7 \033[0m        |
+        newstock = {}
+        for code, details in ChocolateBars.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SC1 \033[0m        \033[1;7;36;96m Snickers \033[0m       \033[1;7;32;92m {convertedcurrency['SC1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['SC1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SC2 \033[0m        \033[1;7;36;96m KitKat \033[0m         \033[1;7;32;92m {convertedcurrency['SC2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 4 \033[0m        |                                                               
+                        |     \033[1;7;31;91m SC2 \033[0m        \033[1;7;36;96m KitKat \033[0m         \033[1;7;32;92m {convertedcurrency['SC2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['SC2']} \033[0m        |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SC3 \033[0m        \033[1;7;36;96m Hershey's \033[0m      \033[1;7;32;92m {convertedcurrency['SC3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 10 \033[0m       |                                                                                       
+                        |     \033[1;7;31;91m SC3 \033[0m        \033[1;7;36;96m Hershey's \033[0m      \033[1;7;32;92m {convertedcurrency['SC3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['SC3']} \033[0m       |                                                                                       
                         |                                                               |
-                        |     \033[1;7;31;91m SC4 \033[0m        \033[1;7;36;96m Milky Way \033[0m      \033[1;7;32;92m {convertedcurrency['SC4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 9 \033[0m        |
+                        |     \033[1;7;31;91m SC4 \033[0m        \033[1;7;36;96m Milky Way \033[0m      \033[1;7;32;92m {convertedcurrency['SC4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['SC4']} \033[0m        |
                         |                                                               |
                         §===============================================================§
 """)
@@ -545,13 +548,16 @@ def chocolateBar_snacks_1AED():
         convertedcurrency = {}
         for code, details in ChocolateBars.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m SC1 \033[0m        \033[1;7;36;96m Snickers \033[0m       \033[1;7;32;92m {convertedcurrency['SC1']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m 7 \033[0m        |
+        newstock = {}
+        for code, details in ChocolateBars.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SC1 \033[0m        \033[1;7;36;96m Snickers \033[0m       \033[1;7;32;92m {convertedcurrency['SC1']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['SC1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SC2 \033[0m        \033[1;7;36;96m KitKat \033[0m         \033[1;7;32;92m {convertedcurrency['SC2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 4 \033[0m        |                                                               
+                        |     \033[1;7;31;91m SC2 \033[0m        \033[1;7;36;96m KitKat \033[0m         \033[1;7;32;92m {convertedcurrency['SC2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SC2']} \033[0m        |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SC3 \033[0m        \033[1;7;36;96m Hershey's \033[0m      \033[1;7;32;92m {convertedcurrency['SC3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 10 \033[0m       |                                                                                       
+                        |     \033[1;7;31;91m SC3 \033[0m        \033[1;7;36;96m Hershey's \033[0m      \033[1;7;32;92m {convertedcurrency['SC3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SC3']} \033[0m       |                                                                                       
                         |                                                               |
-                        |     \033[1;7;31;91m SC4 \033[0m        \033[1;7;36;96m Milky Way \033[0m      \033[1;7;32;92m {convertedcurrency['SC4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 9 \033[0m        |
+                        |     \033[1;7;31;91m SC4 \033[0m        \033[1;7;36;96m Milky Way \033[0m      \033[1;7;32;92m {convertedcurrency['SC4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SC4']} \033[0m        |
                         |                                                               |
                         §===============================================================§
 """)
@@ -585,65 +591,20 @@ def chocolateBar_snacks_1GBP():
         convertedcurrency = {}
         for code, details in ChocolateBars.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m SC1 \033[0m        \033[1;7;36;96m Snickers \033[0m       \033[1;7;32;92m {convertedcurrency['SC1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 7 \033[0m        |
+        newstock = {}
+        for code, details in ChocolateBars.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SC1 \033[0m        \033[1;7;36;96m Snickers \033[0m       \033[1;7;32;92m {convertedcurrency['SC1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['SC1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SC2 \033[0m        \033[1;7;36;96m KitKat \033[0m         \033[1;7;32;92m {convertedcurrency['SC2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 4 \033[0m        |                                                               
+                        |     \033[1;7;31;91m SC2 \033[0m        \033[1;7;36;96m KitKat \033[0m         \033[1;7;32;92m {convertedcurrency['SC2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['SC2']} \033[0m        |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SC3 \033[0m        \033[1;7;36;96m Hershey's \033[0m      \033[1;7;32;92m {convertedcurrency['SC3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 10 \033[0m       |                                                                                       
+                        |     \033[1;7;31;91m SC3 \033[0m        \033[1;7;36;96m Hershey's \033[0m      \033[1;7;32;92m {convertedcurrency['SC3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['SC3']} \033[0m       |                                                                                       
                         |                                                               |
-                        |     \033[1;7;31;91m SC4 \033[0m        \033[1;7;36;96m Milky Way \033[0m      \033[1;7;32;92m {convertedcurrency['SC4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 9 \033[0m        |
+                        |     \033[1;7;31;91m SC4 \033[0m        \033[1;7;36;96m Milky Way \033[0m      \033[1;7;32;92m {convertedcurrency['SC4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['SC4']} \033[0m        |
                         |                                                               |
                         §===============================================================§
 """)
 
-def CurrencyDisplay_ChocolateBar():
-        
-        print (("""\033[1;34;30m
-         _____                                                                                     _____
-        ( ___ )-----------------------------------------------------------------------------------( ___ )
-         |   |                                                                                     |   |
-         |   | _________          _______    _______  _______  _______  _        _______  _______  |   |
-         |   | \__   __/|\     /|(  ____ \  (  ____ \(  ___  )(  ____ )( (    /|(  ____ \(  ____ ) |   |
-         |   |    ) (   | )   ( || (    \/  | (    \/| (   ) || (    )||  \  ( || (    \/| (    )| |   |
-         |   |    | |   | (___) || (__      | |      | |   | || (____)||   \ | || (__    | (____)| |   |
-         |   |    | |   |  ___  ||  __)     | |      | |   | ||     __)| (\ \) ||  __)   |     __) |   |
-         |   |    | |   | (   ) || (        | |      | |   | || (\ (   | | \   || (      | (\ (    |   |
-         |   |    | |   | )   ( || (____/\  | (____/\| (___) || ) \ \__| )  \  || (____/\| ) \ \__ |   |
-         |   |    )_(   |/     \|(_______/  (_______/(_______)|/   \__/|/    )_)(_______/|/   \__/ |   |
-         |___|                                                                                     |___|
-        (_____)-----------------------------------------------------------------------------------(_____)
-\033[0m"""))
-        print ("""\
-                            §=======================================================§
-                            |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
-                            |                                                       |
-                            |         Please select \033[1;34;31m1\033[0m of the \033[1;34;92m3\033[0m Currencies:          |
-                            |                                                       |
-                            |                    \033[1;34;92m1.\033[0m \033[7;34;94m Dollars (USD) \033[0m                 |
-                            |                                                       |
-                            |                    \033[1;34;92m2.\033[0m \033[7;34;94m Pounds (GBP) \033[0m                  |
-                            |                                                       |
-                            |                    \033[1;34;92m3.\033[0m \033[7;34;94m Dirhams (AED) \033[0m                 |
-                            |                                                       |
-                            §=======================================================§
-""")
-
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectcurrency}")
-        if selectcurrency == "1" or selectcurrency.lower() == "dollars":
-                currency = "USD"
-                chocolateBar_snacks_1USD()
-        elif selectcurrency == "2" or selectcurrency.lower() == "pounds":
-                currency = "GBP"
-                chocolateBar_snacks_1GBP()
-        elif selectcurrency == "3" or selectcurrency.lower() == "dirhams":
-                currency = "AED"
-                chocolateBar_snacks_1AED()
-        else: 
-                print ("invalid, defaulting to usd")
-                currency = "USD"
-        
-        print (f"you have picked {currency}")
 
 
 
@@ -725,17 +686,17 @@ rates = {
 }
 
 Chips = {
-            "C1": {"price": 1.00},
-            "C2": {"price": 1.00},
-            "C3": {"price": 2.00},
-            "C4": {"price": 2.00},
-            "C5": {"price": 2.00},
-            "C6": {"price": 2.00},
-            "C7": {"price": 3.00},
-            "C8": {"price": 1.00},
-            "C9": {"price": 1.00},
-            "C10": {"price": 3.00},
-            "C11": {"price": 5.00},
+            "C1": {"price": 1.00, "stock" : 5, "tags": ["Gluten Free"] },
+            "C2": {"price": 1.00, "stock" : 1  },
+            "C3": {"price": 2.00, "stock" : 3  },
+            "C4": {"price": 2.00, "stock" : 7, "tags": ["Gluten Free"] },
+            "C5": {"price": 2.00, "stock" : 5  },
+            "C6": {"price": 2.00, "stock" : 4 },
+            "C7": {"price": 3.00, "stock" : 10  },
+            "C8": {"price": 1.00, "stock" : 15 },
+            "C9": {"price": 1.00, "stock" : 1 },
+            "C10": {"price": 3.00, "stock" : 1, "tags": ["Vegan"]},
+            "C11": {"price": 5.00, "stock" : 13, "tags": ["Gluten Free, Diabetes Friendly"] },
 }
 
 def chips_snacks_2USD():
@@ -766,39 +727,42 @@ def chips_snacks_2USD():
         convertedcurrency = {}
         for code, details in Chips.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m C1 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in Chips.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m C1 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C1']} \033[0m        |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m C2 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C2 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C2']} \033[0m        |
                         |                 \033[1;7;36;96m (BBQ) \033[0m                                       |                                                                                                                              
                         |                                                               |
-                        |     \033[1;7;31;91m C3 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m C3 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C3']} \033[0m        |
                         |                 \033[1;7;36;96m (Sour Cream) \033[0m                                |                                                                                                                                                      
                         |                                                               |
-                        |     \033[1;7;31;91m C4 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 7 \033[0m        |
+                        |     \033[1;7;31;91m C4 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C4']} \033[0m        |
                         |                 \033[1;7;36;96m (Salt & \033[0m                                     |  
                         |                 \033[1;7;36;96m Vinegar) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m C5 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m C5 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C5']} \033[0m        |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C6 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m C6 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C6']} \033[0m        |
                         |                 \033[1;7;36;96m (Hot & BBQ) \033[0m                                 |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C7 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C7']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 10 \033[0m       |
+                        |     \033[1;7;31;91m C7 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C7']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C7']} \033[0m       |
                         |                 \033[1;7;36;96m (Cheddar \033[0m                                    |  
                         |                 \033[1;7;36;96mJalepeno) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m C8 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C8']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 15 \033[0m       |
+                        |     \033[1;7;31;91m C8 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C8']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C8']} \033[0m       |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C9 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C9']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C9 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C9']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C9']} \033[0m        |
                         |                 \033[1;7;36;96m (Flamin' Hot) \033[0m                               |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Ruffles \033[0m        \033[1;7;32;92m {convertedcurrency['C10']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Ruffles \033[0m        \033[1;7;32;92m {convertedcurrency['C10']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C10']} \033[0m        |
                         |                 \033[1;7;36;96m (Originals) \033[0m                                 |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Chips \033[0m          \033[1;7;32;92m {convertedcurrency['C11']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 13 \033[0m       |
+                        |     \033[1;7;31;91m C11 \033[0m       \033[1;7;36;96m Chips \033[0m          \033[1;7;32;92m {convertedcurrency['C11']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['C11']} \033[0m       |
                         |                 \033[1;7;36;96m Omani \033[0m                                       |                                                              
                         |                                                               |                                      
                         §===============================================================§
@@ -832,39 +796,42 @@ def chips_snacks_2AED():
         convertedcurrency = {}
         for code, details in Chips.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m C1 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in Chips.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m C1 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C1']} \033[0m        |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m C2 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C2 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C2']} \033[0m        |
                         |                 \033[1;7;36;96m (BBQ) \033[0m                                       |                                                                                                                              
                         |                                                               |
-                        |     \033[1;7;31;91m C3 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m C3 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C3']} \033[0m        |
                         |                 \033[1;7;36;96m (Sour Cream) \033[0m                                |                                                                                                                                                      
                         |                                                               |
-                        |     \033[1;7;31;91m C4 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 7 \033[0m        |
+                        |     \033[1;7;31;91m C4 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C4']} \033[0m        |
                         |                 \033[1;7;36;96m (Salt & \033[0m                                     |  
                         |                 \033[1;7;36;96m Vinegar) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m C5 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C5']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m C5 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C5']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C5']} \033[0m        |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C6 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C6']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m C6 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C6']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C6']} \033[0m        |
                         |                 \033[1;7;36;96m (Hot & BBQ) \033[0m                                 |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C7 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C7']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 10 \033[0m       |
+                        |     \033[1;7;31;91m C7 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C7']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['C7']} \033[0m       |
                         |                 \033[1;7;36;96m (Cheddar \033[0m                                    |  
                         |                 \033[1;7;36;96mJalepeno) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m C8 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C8']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 15 \033[0m       |
+                        |     \033[1;7;31;91m C8 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C8']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C8']} \033[0m       |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C9 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C9']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C9 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C9']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['C9']} \033[0m        |
                         |                 \033[1;7;36;96m (Flamin' Hot) \033[0m                               |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Ruffles \033[0m        \033[1;7;32;92m {convertedcurrency['C10']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Ruffles \033[0m        \033[1;7;32;92m {convertedcurrency['C10']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['C10']} \033[0m        |
                         |                 \033[1;7;36;96m (Originals) \033[0m                                 |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Chips \033[0m          \033[1;7;32;92m {convertedcurrency['C11']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 13 \033[0m       |
+                        |     \033[1;7;31;91m C11 \033[0m       \033[1;7;36;96m Chips \033[0m          \033[1;7;32;92m {convertedcurrency['C11']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['C11']} \033[0m       |
                         |                 \033[1;7;36;96m Omani \033[0m                                       |                                                              
                         |                                                               |                                      
                         §===============================================================§
@@ -898,92 +865,47 @@ def chips_snacks_2GBP():
         convertedcurrency = {}
         for code, details in Chips.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m C1 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in Chips.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m C1 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C1']} \033[0m        |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m C2 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C2 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C2']} \033[0m        |
                         |                 \033[1;7;36;96m (BBQ) \033[0m                                       |                                                                                                                              
                         |                                                               |
-                        |     \033[1;7;31;91m C3 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m C3 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C3']} \033[0m        |
                         |                 \033[1;7;36;96m (Sour Cream) \033[0m                                |                                                                                                                                                      
                         |                                                               |
-                        |     \033[1;7;31;91m C4 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 7 \033[0m        |
+                        |     \033[1;7;31;91m C4 \033[0m        \033[1;7;36;96m Lay's \033[0m          \033[1;7;32;92m {convertedcurrency['C4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C4']} \033[0m        |
                         |                 \033[1;7;36;96m (Salt & \033[0m                                     |  
                         |                 \033[1;7;36;96m Vinegar) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m C5 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m C5 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C5']} \033[0m        |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C6 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m C6 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C6']} \033[0m        |
                         |                 \033[1;7;36;96m (Hot & BBQ) \033[0m                                 |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C7 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C7']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 10 \033[0m       |
+                        |     \033[1;7;31;91m C7 \033[0m        \033[1;7;36;96m Pringles \033[0m       \033[1;7;32;92m {convertedcurrency['C7']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C7']} \033[0m       |
                         |                 \033[1;7;36;96m (Cheddar \033[0m                                    |  
                         |                 \033[1;7;36;96mJalepeno) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m C8 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C8']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 15 \033[0m       |
+                        |     \033[1;7;31;91m C8 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C8']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C8']} \033[0m       |
                         |                 \033[1;7;36;96m (Classic) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C9 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C9']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C9 \033[0m        \033[1;7;36;96m Cheetos \033[0m        \033[1;7;32;92m {convertedcurrency['C9']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C9']} \033[0m        |
                         |                 \033[1;7;36;96m (Flamin' Hot) \033[0m                               |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Ruffles \033[0m        \033[1;7;32;92m {convertedcurrency['C10']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Ruffles \033[0m        \033[1;7;32;92m {convertedcurrency['C10']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C10']} \033[0m        |
                         |                 \033[1;7;36;96m (Originals) \033[0m                                 |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m C10 \033[0m       \033[1;7;36;96m Chips \033[0m          \033[1;7;32;92m {convertedcurrency['C11']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 13 \033[0m       |
+                        |     \033[1;7;31;91m C11 \033[0m       \033[1;7;36;96m Chips \033[0m          \033[1;7;32;92m {convertedcurrency['C11']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['C11']} \033[0m       |
                         |                 \033[1;7;36;96m Omani \033[0m                                       |                                                              
                         |                                                               |                                      
                         §===============================================================§
 """)
 
-def CurrencyDisplay_Chips():
-        
-        print (("""\033[1;34;30m
-         _____                                                                                     _____
-        ( ___ )-----------------------------------------------------------------------------------( ___ )
-         |   |                                                                                     |   |
-         |   | _________          _______    _______  _______  _______  _        _______  _______  |   |
-         |   | \__   __/|\     /|(  ____ \  (  ____ \(  ___  )(  ____ )( (    /|(  ____ \(  ____ ) |   |
-         |   |    ) (   | )   ( || (    \/  | (    \/| (   ) || (    )||  \  ( || (    \/| (    )| |   |
-         |   |    | |   | (___) || (__      | |      | |   | || (____)||   \ | || (__    | (____)| |   |
-         |   |    | |   |  ___  ||  __)     | |      | |   | ||     __)| (\ \) ||  __)   |     __) |   |
-         |   |    | |   | (   ) || (        | |      | |   | || (\ (   | | \   || (      | (\ (    |   |
-         |   |    | |   | )   ( || (____/\  | (____/\| (___) || ) \ \__| )  \  || (____/\| ) \ \__ |   |
-         |   |    )_(   |/     \|(_______/  (_______/(_______)|/   \__/|/    )_)(_______/|/   \__/ |   |
-         |___|                                                                                     |___|
-        (_____)-----------------------------------------------------------------------------------(_____)
-\033[0m"""))
-        print ("""\
-                            §=======================================================§
-                            |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
-                            |                                                       |
-                            |         Please select \033[1;34;31m1\033[0m of the \033[1;34;92m3\033[0m Currencies:          |
-                            |                                                       |
-                            |                    \033[1;34;92m1.\033[0m \033[7;34;94m Dollars (USD) \033[0m                 |
-                            |                                                       |
-                            |                    \033[1;34;92m2.\033[0m \033[7;34;94m Pounds (GBP) \033[0m                  |
-                            |                                                       |
-                            |                    \033[1;34;92m3.\033[0m \033[7;34;94m Dirhams (AED) \033[0m                 |
-                            |                                                       |
-                            §=======================================================§
-""")
-
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectcurrency}")
-        if selectcurrency == "1" or selectcurrency.lower() == "dollars":
-                currency = "USD"
-                chips_snacks_2USD()
-        elif selectcurrency == "2" or selectcurrency.lower() == "pounds":
-                currency = "GBP"
-                chips_snacks_2GBP()
-        elif selectcurrency == "3" or selectcurrency.lower() == "dirhams":
-                currency = "AED"
-                chips_snacks_2AED()
-        else: 
-                print ("invalid, defaulting to usd")
-                currency = "USD"
-        
-        print (f"you have picked {currency}")
 
 
 
@@ -1043,10 +965,10 @@ rates = {
 }
 
 CrackersandCookies = {
-            "CC1": {"price": 1.50},
-            "CC2": {"price": 2.50},
-            "CC3": {"price": 1.00},
-            "CC4": {"price": 3.50},
+            "CC1": {"price": 1.50, "stock" : 3 },
+            "CC2": {"price": 2.50, "stock" : 5 },
+            "CC3": {"price": 1.00, "stock" : 1 },
+            "CC4": {"price": 3.50, "stock" : 9 },
 }
 
 def crackersCookies_snacks_3USD():
@@ -1077,13 +999,16 @@ def crackersCookies_snacks_3USD():
         convertedcurrency = {}
         for code, details in CrackersandCookies.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m CC1 \033[0m        \033[1;7;36;96m Ritz \033[0m           \033[1;7;32;92m {convertedcurrency['CC1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 3 \033[0m        |
+        newstock = {}
+        for code, details in CrackersandCookies.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m CC1 \033[0m        \033[1;7;36;96m Ritz \033[0m           \033[1;7;32;92m {convertedcurrency['CC1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CC1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m CC2 \033[0m        \033[1;7;36;96m Oreos \033[0m          \033[1;7;32;92m {convertedcurrency['CC2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 5 \033[0m        |                                                               
+                        |     \033[1;7;31;91m CC2 \033[0m        \033[1;7;36;96m Oreos \033[0m          \033[1;7;32;92m {convertedcurrency['CC2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CC2']} \033[0m        |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m CC3 \033[0m        \033[1;7;36;96m Cheez-Its \033[0m      \033[1;7;32;92m {convertedcurrency['CC3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |                                                                                       
+                        |     \033[1;7;31;91m CC3 \033[0m        \033[1;7;36;96m Cheez-Its \033[0m      \033[1;7;32;92m {convertedcurrency['CC3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CC3']} \033[0m        |                                                                                       
                         |                                                               |
-                        |     \033[1;7;31;91m CC4 \033[0m        \033[1;7;36;96m Nutter \033[0m         \033[1;7;32;92m {convertedcurrency['CC4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m CC4 \033[0m        \033[1;7;36;96m Nutter \033[0m         \033[1;7;32;92m {convertedcurrency['CC4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CC4']} \033[0m        |
                         |                  \033[1;7;36;96m Butterz \033[0m                                    |
                         |                                                               |
                         |                                                               |               
@@ -1118,13 +1043,16 @@ def crackersCookies_snacks_3GBP():
         convertedcurrency = {}
         for code, details in CrackersandCookies.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m CC1 \033[0m        \033[1;7;36;96m Ritz \033[0m           \033[1;7;32;92m {convertedcurrency['CC1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 3 \033[0m        |
+        newstock = {}
+        for code, details in CrackersandCookies.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m CC1 \033[0m        \033[1;7;36;96m Ritz \033[0m           \033[1;7;32;92m {convertedcurrency['CC1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CC1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m CC2 \033[0m        \033[1;7;36;96m Oreos \033[0m          \033[1;7;32;92m {convertedcurrency['CC2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 5 \033[0m        |                                                               
+                        |     \033[1;7;31;91m CC2 \033[0m        \033[1;7;36;96m Oreos \033[0m          \033[1;7;32;92m {convertedcurrency['CC2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CC2']} \033[0m        |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m CC3 \033[0m        \033[1;7;36;96m Cheez-Its \033[0m      \033[1;7;32;92m {convertedcurrency['CC3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m        |                                                                                       
+                        |     \033[1;7;31;91m CC3 \033[0m        \033[1;7;36;96m Cheez-Its \033[0m      \033[1;7;32;92m {convertedcurrency['CC3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CC3']} \033[0m        |                                                                                       
                         |                                                               |
-                        |     \033[1;7;31;91m CC4 \033[0m        \033[1;7;36;96m Nutter \033[0m         \033[1;7;32;92m {convertedcurrency['CC4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m CC4 \033[0m        \033[1;7;36;96m Nutter \033[0m         \033[1;7;32;92m {convertedcurrency['CC4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CC4']} \033[0m        |
                         |                  \033[1;7;36;96m Butterz \033[0m                                    |
                         |                                                               |
                         |                                                               |               
@@ -1159,67 +1087,21 @@ def crackersCookies_snacks_3AED():
         convertedcurrency = {}
         for code, details in CrackersandCookies.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m CC1 \033[0m        \033[1;7;36;96m Ritz \033[0m           \033[1;7;32;92m {convertedcurrency['CC1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 3 \033[0m        |
+        newstock = {}
+        for code, details in CrackersandCookies.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m CC1 \033[0m        \033[1;7;36;96m Ritz \033[0m           \033[1;7;32;92m {convertedcurrency['CC1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['CC1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m CC2 \033[0m        \033[1;7;36;96m Oreos \033[0m          \033[1;7;32;92m {convertedcurrency['CC2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 5 \033[0m        |                                                               
+                        |     \033[1;7;31;91m CC2 \033[0m        \033[1;7;36;96m Oreos \033[0m          \033[1;7;32;92m {convertedcurrency['CC2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['CC2']} \033[0m        |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m CC3 \033[0m        \033[1;7;36;96m Cheez-Its \033[0m      \033[1;7;32;92m {convertedcurrency['CC3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |                                                                                       
+                        |     \033[1;7;31;91m CC3 \033[0m        \033[1;7;36;96m Cheez-Its \033[0m      \033[1;7;32;92m {convertedcurrency['CC3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['CC3']} \033[0m        |                                                                                       
                         |                                                               |
-                        |     \033[1;7;31;91m CC4 \033[0m        \033[1;7;36;96m Nutter \033[0m         \033[1;7;32;92m {convertedcurrency['CC4']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m CC4 \033[0m        \033[1;7;36;96m Nutter \033[0m         \033[1;7;32;92m {convertedcurrency['CC4']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['CC4']} \033[0m        |
                         |                  \033[1;7;36;96m Butterz \033[0m                                    |
                         |                                                               |
                         |                                                               |               
                         §===============================================================§
 """)
-
-def CurrencyDisplay_CrackersCookies():
-        
-        print (("""\033[1;34;30m
-         _____                                                                                     _____
-        ( ___ )-----------------------------------------------------------------------------------( ___ )
-         |   |                                                                                     |   |
-         |   | _________          _______    _______  _______  _______  _        _______  _______  |   |
-         |   | \__   __/|\     /|(  ____ \  (  ____ \(  ___  )(  ____ )( (    /|(  ____ \(  ____ ) |   |
-         |   |    ) (   | )   ( || (    \/  | (    \/| (   ) || (    )||  \  ( || (    \/| (    )| |   |
-         |   |    | |   | (___) || (__      | |      | |   | || (____)||   \ | || (__    | (____)| |   |
-         |   |    | |   |  ___  ||  __)     | |      | |   | ||     __)| (\ \) ||  __)   |     __) |   |
-         |   |    | |   | (   ) || (        | |      | |   | || (\ (   | | \   || (      | (\ (    |   |
-         |   |    | |   | )   ( || (____/\  | (____/\| (___) || ) \ \__| )  \  || (____/\| ) \ \__ |   |
-         |   |    )_(   |/     \|(_______/  (_______/(_______)|/   \__/|/    )_)(_______/|/   \__/ |   |
-         |___|                                                                                     |___|
-        (_____)-----------------------------------------------------------------------------------(_____)
-\033[0m"""))
-        print ("""\
-                            §=======================================================§
-                            |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
-                            |                                                       |
-                            |         Please select \033[1;34;31m1\033[0m of the \033[1;34;92m3\033[0m Currencies:          |
-                            |                                                       |
-                            |                    \033[1;34;92m1.\033[0m \033[7;34;94m Dollars (USD) \033[0m                 |
-                            |                                                       |
-                            |                    \033[1;34;92m2.\033[0m \033[7;34;94m Pounds (GBP) \033[0m                  |
-                            |                                                       |
-                            |                    \033[1;34;92m3.\033[0m \033[7;34;94m Dirhams (AED) \033[0m                 |
-                            |                                                       |
-                            §=======================================================§
-""")
-
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectcurrency}")
-        if selectcurrency == "1" or selectcurrency.lower() == "dollars":
-                currency = "USD"
-                crackersCookies_snacks_3USD()
-        elif selectcurrency == "2" or selectcurrency.lower() == "pounds":
-                currency = "GBP"
-                crackersCookies_snacks_3GBP()
-        elif selectcurrency == "3" or selectcurrency.lower() == "dirhams":
-                currency = "AED"
-                crackersCookies_snacks_3AED()
-        else: 
-                print ("invalid, defaulting to usd")
-                currency = "USD"
-        
-        print (f"you have picked {currency}")
 
 
 
@@ -1281,12 +1163,12 @@ rates = {
 }
 
 Candy = {
-        "CA1": {"price": 4.50},
-        "CA2": {"price": 5.00},
-        "CA3": {"price": 4.50},
-        "CA4": {"price": 5.50},
-        "CA5": {"price": 0.50},
-        "CA6": {"price": 2.75},
+        "CA1": {"price": 4.50, "stock" : 15 },
+        "CA2": {"price": 5.00, "stock" : 1 },
+        "CA3": {"price": 4.50, "stock" : 0 },
+        "CA4": {"price": 5.50, "stock" : 2 },
+        "CA5": {"price": 0.50, "stock" : 30 },
+        "CA6": {"price": 2.75, "stock" : 8 },
 }
 
 def candy_snacks_4USD():
@@ -1317,17 +1199,20 @@ def candy_snacks_4USD():
         convertedcurrency = {}
         for code, details in Candy.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m CA1 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 15 \033[0m       |
+        newstock = {}
+        for code, details in Candy.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m CA1 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CA1']} \033[0m       |
                         |                                                               |
-                        |     \033[1;7;31;91m CA2 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m CA2 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CA2']} \033[0m        |
                         |                    \033[1;7;36;96m (Peanuts) \033[0m                                |
                         |                                                               |               
-                        |     \033[1;7;31;91m CA3 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 0 \033[0m        |                                                                                       
+                        |     \033[1;7;31;91m CA3 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CA3']} \033[0m        |                                                                                       
                         |                                                               |                                                                                    
-                        |     \033[1;7;31;91m CA4 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m CA4 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CA4']} \033[0m        |
                         |                    \033[1;7;36;96m (Sour) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m CA5 \033[0m          \033[1;7;36;96m Juicy \033[0m        \033[1;7;32;92m {convertedcurrency['CA5']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m CA5 \033[0m          \033[1;7;36;96m Juicy \033[0m        \033[1;7;32;92m {convertedcurrency['CA5']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CA5']} \033[0m       |
                         |                    \033[1;7;36;96m Fruitz \033[0m                                   |                                                               
                         |                                                               |
                         §===============================================================§
@@ -1361,17 +1246,20 @@ def candy_snacks_4GBP():
         convertedcurrency = {}
         for code, details in Candy.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""               |     \033[1;7;31;91m CA1 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 15 \033[0m        |
+        newstock = {}
+        for code, details in Candy.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m CA1 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CA1']} \033[0m       |
                         |                                                               |
-                        |     \033[1;7;31;91m CA2 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m         |
+                        |     \033[1;7;31;91m CA2 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CA2']} \033[0m        |
                         |                    \033[1;7;36;96m (Peanuts) \033[0m                                |
                         |                                                               |               
-                        |     \033[1;7;31;91m CA3 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 0 \033[0m         |                                                                                       
+                        |     \033[1;7;31;91m CA3 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CA3']} \033[0m        |                                                                                       
                         |                                                               |                                                                                    
-                        |     \033[1;7;31;91m CA4 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m         |
+                        |     \033[1;7;31;91m CA4 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CA4']} \033[0m        |
                         |                    \033[1;7;36;96m (Sour) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m CA5 \033[0m          \033[1;7;36;96m Juicy \033[0m        \033[1;7;32;92m {convertedcurrency['CA5']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 2 \033[0m         |
+                        |     \033[1;7;31;91m CA5 \033[0m          \033[1;7;36;96m Juicy \033[0m        \033[1;7;32;92m {convertedcurrency['CA5']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CA5']} \033[0m       |
                         |                    \033[1;7;36;96m Fruitz \033[0m                                   |                                                               
                         |                                                               |
                         §===============================================================§
@@ -1405,70 +1293,24 @@ def candy_snacks_4AED():
         convertedcurrency = {}
         for code, details in Candy.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""               |     \033[1;7;31;91m CA1 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA1']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m 15 \033[0m        |
+        newstock = {}
+        for code, details in Candy.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m CA1 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA1']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['CA1']} \033[0m       |
                         |                                                               |
-                        |     \033[1;7;31;91m CA2 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA2']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m 1 \033[0m         |
+                        |     \033[1;7;31;91m CA2 \033[0m          \033[1;7;36;96m M&Ms \033[0m         \033[1;7;32;92m {convertedcurrency['CA2']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['CA2']} \033[0m        |
                         |                    \033[1;7;36;96m (Peanuts) \033[0m                                |
                         |                                                               |               
-                        |     \033[1;7;31;91m CA3 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA3']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m 0 \033[0m         |                                                                                       
+                        |     \033[1;7;31;91m CA3 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA3']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['CA3']} \033[0m        |                                                                                       
                         |                                                               |                                                                                    
-                        |     \033[1;7;31;91m CA4 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA4']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m 1 \033[0m         |
+                        |     \033[1;7;31;91m CA4 \033[0m          \033[1;7;36;96m Skittles \033[0m     \033[1;7;32;92m {convertedcurrency['CA4']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['CA4']} \033[0m        |
                         |                    \033[1;7;36;96m (Sour) \033[0m                                   |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m CA5 \033[0m          \033[1;7;36;96m Juicy \033[0m        \033[1;7;32;92m {convertedcurrency['CA5']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m 2 \033[0m         |
+                        |     \033[1;7;31;91m CA5 \033[0m          \033[1;7;36;96m Juicy \033[0m        \033[1;7;32;92m {convertedcurrency['CA5']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['CA5']} \033[0m       |
                         |                    \033[1;7;36;96m Fruitz \033[0m                                   |                                                               
                         |                                                               |
                         §===============================================================§
 """)
-
-def CurrencyDisplay_Candy():
-        
-        print (("""\033[1;34;30m
-         _____                                                                                     _____
-        ( ___ )-----------------------------------------------------------------------------------( ___ )
-         |   |                                                                                     |   |
-         |   | _________          _______    _______  _______  _______  _        _______  _______  |   |
-         |   | \__   __/|\     /|(  ____ \  (  ____ \(  ___  )(  ____ )( (    /|(  ____ \(  ____ ) |   |
-         |   |    ) (   | )   ( || (    \/  | (    \/| (   ) || (    )||  \  ( || (    \/| (    )| |   |
-         |   |    | |   | (___) || (__      | |      | |   | || (____)||   \ | || (__    | (____)| |   |
-         |   |    | |   |  ___  ||  __)     | |      | |   | ||     __)| (\ \) ||  __)   |     __) |   |
-         |   |    | |   | (   ) || (        | |      | |   | || (\ (   | | \   || (      | (\ (    |   |
-         |   |    | |   | )   ( || (____/\  | (____/\| (___) || ) \ \__| )  \  || (____/\| ) \ \__ |   |
-         |   |    )_(   |/     \|(_______/  (_______/(_______)|/   \__/|/    )_)(_______/|/   \__/ |   |
-         |___|                                                                                     |___|
-        (_____)-----------------------------------------------------------------------------------(_____)
-\033[0m"""))
-        print ("""\
-                            §=======================================================§
-                            |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
-                            |                                                       |
-                            |         Please select \033[1;34;31m1\033[0m of the \033[1;34;92m3\033[0m Currencies:          |
-                            |                                                       |
-                            |                    \033[1;34;92m1.\033[0m \033[7;34;94m Dollars (USD) \033[0m                 |
-                            |                                                       |
-                            |                    \033[1;34;92m2.\033[0m \033[7;34;94m Pounds (GBP) \033[0m                  |
-                            |                                                       |
-                            |                    \033[1;34;92m3.\033[0m \033[7;34;94m Dirhams (AED) \033[0m                 |
-                            |                                                       |
-                            §=======================================================§
-""")
-
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectcurrency}")
-        if selectcurrency == "1" or selectcurrency.lower() == "dollars":
-                currency = "USD"
-                candy_snacks_4USD()
-        elif selectcurrency == "2" or selectcurrency.lower() == "pounds":
-                currency = "GBP"
-                candy_snacks_4GBP()
-        elif selectcurrency == "3" or selectcurrency.lower() == "dirhams":
-                currency = "AED"
-                candy_snacks_4AED()
-        else: 
-                print ("invalid, defaulting to usd")
-                currency = "USD"
-        
-        print (f"you have picked {currency}")
 
 
         
@@ -1528,9 +1370,9 @@ rates = {
 }
 
 water = {
-            "W1": {"price": 0.99},
-            "W3": {"price": 3.99},
-            "W2": {"price": 4.25},
+            "W1": {"price": 0.99, "stock" : 0, "tags": ["Gluten Free, Sugar Free"]},
+            "W3": {"price": 3.99, "stock" : 5, "tags": ["Gluten Free"] },
+            "W2": {"price": 4.25, "stock" : 1, "tags": ["Gluten Free, Sugar Free"]},
 }
 
 def water_drinks_1USD():
@@ -1561,12 +1403,15 @@ def water_drinks_1USD():
         convertedcurrency = {}
         for code, details in water.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m W1 \033[0m           \033[1;7;36;96m Water \033[0m         \033[1;7;32;92m {convertedcurrency['W1']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in water.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m W1 \033[0m           \033[1;7;36;96m Water \033[0m         \033[1;7;32;92m {convertedcurrency['W1']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['W1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m W2 \033[0m           \033[1;7;36;96m Vitamin \033[0m       \033[1;7;32;92m {convertedcurrency['W2']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m W2 \033[0m           \033[1;7;36;96m Vitamin \033[0m       \033[1;7;32;92m {convertedcurrency['W2']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['W2']} \033[0m        |
                         |                    \033[1;7;36;96m Water \033[0m                                    |
                         |                                                               |               
-                        |     \033[1;7;31;91m W3 \033[0m           \033[1;7;36;96m Water \033[0m         \033[1;7;32;92m {convertedcurrency['W3']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m W3 \033[0m           \033[1;7;36;96m Water \033[0m         \033[1;7;32;92m {convertedcurrency['W3']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['W3']} \033[0m        |
                         |                    \033[1;7;36;96m (Sparkling) \033[0m                              |                                                               
                         |                                                               |
                         §===============================================================§
@@ -1600,12 +1445,15 @@ def water_drinks_1GBP():
         convertedcurrency = {}
         for code, details in water.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m W1 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in water.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m W1 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['W1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m W2 \033[0m           \033[1;7;36;96m Vitamin \033[0m      \033[1;7;32;92m {convertedcurrency['W2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m W2 \033[0m           \033[1;7;36;96m Vitamin \033[0m      \033[1;7;32;92m {convertedcurrency['W2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['W2']} \033[0m        |
                         |                    \033[1;7;36;96m Water \033[0m                                    |
                         |                                                               |               
-                        |     \033[1;7;31;91m W3 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m W3 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['W3']} \033[0m        |
                         |                    \033[1;7;36;96m (Sparkling) \033[0m                              |                                                               
                         |                                                               |
                         §===============================================================§
@@ -1639,65 +1487,20 @@ def water_drinks_1AED():
         convertedcurrency = {}
         for code, details in water.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m W1 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in water.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m W1 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['W1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m W2 \033[0m           \033[1;7;36;96m Vitamin \033[0m      \033[1;7;32;92m {convertedcurrency['W2']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m W2 \033[0m           \033[1;7;36;96m Vitamin \033[0m      \033[1;7;32;92m {convertedcurrency['W2']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['W2']} \033[0m        |
                         |                    \033[1;7;36;96m Water \033[0m                                    |
                         |                                                               |               
-                        |     \033[1;7;31;91m W3 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W3']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m W3 \033[0m           \033[1;7;36;96m Water \033[0m        \033[1;7;32;92m {convertedcurrency['W3']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['W3']} \033[0m        |
                         |                    \033[1;7;36;96m (Sparkling) \033[0m                              |                                                               
                         |                                                               |
                         §===============================================================§
 """)
 
-def CurrencyDisplay_Water():
-        
-        print (("""\033[1;34;30m
-         _____                                                                                     _____
-        ( ___ )-----------------------------------------------------------------------------------( ___ )
-         |   |                                                                                     |   |
-         |   | _________          _______    _______  _______  _______  _        _______  _______  |   |
-         |   | \__   __/|\     /|(  ____ \  (  ____ \(  ___  )(  ____ )( (    /|(  ____ \(  ____ ) |   |
-         |   |    ) (   | )   ( || (    \/  | (    \/| (   ) || (    )||  \  ( || (    \/| (    )| |   |
-         |   |    | |   | (___) || (__      | |      | |   | || (____)||   \ | || (__    | (____)| |   |
-         |   |    | |   |  ___  ||  __)     | |      | |   | ||     __)| (\ \) ||  __)   |     __) |   |
-         |   |    | |   | (   ) || (        | |      | |   | || (\ (   | | \   || (      | (\ (    |   |
-         |   |    | |   | )   ( || (____/\  | (____/\| (___) || ) \ \__| )  \  || (____/\| ) \ \__ |   |
-         |   |    )_(   |/     \|(_______/  (_______/(_______)|/   \__/|/    )_)(_______/|/   \__/ |   |
-         |___|                                                                                     |___|
-        (_____)-----------------------------------------------------------------------------------(_____)
-\033[0m"""))
-        print ("""\
-                            §=======================================================§
-                            |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
-                            |                                                       |
-                            |         Please select \033[1;34;31m1\033[0m of the \033[1;34;92m3\033[0m Currencies:          |
-                            |                                                       |
-                            |                    \033[1;34;92m1.\033[0m \033[7;34;94m Dollars (USD) \033[0m                 |
-                            |                                                       |
-                            |                    \033[1;34;92m2.\033[0m \033[7;34;94m Pounds (GBP) \033[0m                  |
-                            |                                                       |
-                            |                    \033[1;34;92m3.\033[0m \033[7;34;94m Dirhams (AED) \033[0m                 |
-                            |                                                       |
-                            §=======================================================§
-""")
-
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectcurrency}")
-        if selectcurrency == "1" or selectcurrency.lower() == "dollars":
-                currency = "USD"
-                water_drinks_1USD()
-        elif selectcurrency == "2" or selectcurrency.lower() == "pounds":
-                currency = "GBP"
-                water_drinks_1GBP()
-        elif selectcurrency == "3" or selectcurrency.lower() == "dirhams":
-                currency = "AED"
-                water_drinks_1AED()
-        else: 
-                print ("invalid, defaulting to usd")
-                currency = "USD"
-        
-        print (f"you have picked {currency}")
 
 
 
@@ -1757,9 +1560,9 @@ rates = {
 }
 
 EnergyDrinks = {
-        "EE1": {"price": 7.25},
-        "EE2": {"price": 7.99},
-        "EE3": {"price": 9.65},
+        "EE1": {"price": 7.25, "stock" : 0, "tags": ["Gluten Free"] },
+        "EE2": {"price": 7.99, "stock" : 1, "tags": ["Gluten Free"] },
+        "EE3": {"price": 9.65, "stock" : 1 },
 }
 
 def energyDrink_drinks_2USD():
@@ -1790,14 +1593,17 @@ def energyDrink_drinks_2USD():
         convertedcurrency = {}
         for code, details in EnergyDrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m EE1 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in EnergyDrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m EE1 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['EE1']} \033[0m        |
                         |                    \033[1;7;36;96m Bull \033[0m                                     |               
                         |                                                               |
-                        |     \033[1;7;31;91m EE2 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EE2 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['EE2']} \033[0m        |
                         |                    \033[1;7;36;96m Bull \033[0m                                     |
                         |                    \033[1;7;36;96m (Cherry) \033[0m                                 |               
                         |                                                               |               
-                        |     \033[1;7;31;91m EE3 \033[0m          \033[1;7;36;96m MONSTER \033[0m      \033[1;7;32;92m {convertedcurrency['EE3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EE3 \033[0m          \033[1;7;36;96m MONSTER \033[0m      \033[1;7;32;92m {convertedcurrency['EE3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['EE3']} \033[0m        |
                         |                    \033[1;7;36;96m ENERGY \033[0m                                   |                                                               
                         |                                                               |
                         §===============================================================§
@@ -1831,14 +1637,17 @@ def energyDrink_drinks_2GBP():
         convertedcurrency = {}
         for code, details in EnergyDrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m EE1 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in EnergyDrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m EE1 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['EE1']} \033[0m        |
                         |                    \033[1;7;36;96m Bull \033[0m                                     |               
                         |                                                               |
-                        |     \033[1;7;31;91m EE2 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EE2 \033[0m          \033[1;7;36;96m Red \033[0m          \033[1;7;32;92m {convertedcurrency['EE2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['EE2']} \033[0m        |
                         |                    \033[1;7;36;96m Bull \033[0m                                     |
                         |                    \033[1;7;36;96m (Cherry) \033[0m                                 |               
                         |                                                               |               
-                        |     \033[1;7;31;91m EE3 \033[0m          \033[1;7;36;96m MONSTER \033[0m      \033[1;7;32;92m {convertedcurrency['EE3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EE3 \033[0m          \033[1;7;36;96m MONSTER \033[0m      \033[1;7;32;92m {convertedcurrency['EE3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['EE3']} \033[0m        |
                         |                    \033[1;7;36;96m ENERGY \033[0m                                   |                                                               
                         |                                                               |
                         §===============================================================§
@@ -1872,67 +1681,22 @@ def energyDrink_drinks_2AED():
         convertedcurrency = {}
         for code, details in EnergyDrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m EE1 \033[0m          \033[1;7;36;96m Red \033[0m         \033[1;7;32;92m {convertedcurrency['EE1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in EnergyDrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m EE1 \033[0m          \033[1;7;36;96m Red \033[0m         \033[1;7;32;92m {convertedcurrency['EE1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['EE1']} \033[0m        |
                         |                    \033[1;7;36;96m Bull \033[0m                                     |               
                         |                                                               |
-                        |     \033[1;7;31;91m EE2 \033[0m          \033[1;7;36;96m Red \033[0m         \033[1;7;32;92m {convertedcurrency['EE2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EE2 \033[0m          \033[1;7;36;96m Red \033[0m         \033[1;7;32;92m {convertedcurrency['EE2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['EE2']} \033[0m        |
                         |                    \033[1;7;36;96m Bull \033[0m                                     |
                         |                    \033[1;7;36;96m (Cherry) \033[0m                                 |               
                         |                                                               |               
-                        |     \033[1;7;31;91m EE3 \033[0m          \033[1;7;36;96m MONSTER \033[0m     \033[1;7;32;92m {convertedcurrency['EE3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EE3 \033[0m          \033[1;7;36;96m MONSTER \033[0m     \033[1;7;32;92m {convertedcurrency['EE3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['EE3']} \033[0m        |
                         |                    \033[1;7;36;96m ENERGY \033[0m                                   |                                                               
                         |                                                               |
                         §===============================================================§
 """)
 
-def CurrencyDisplay_EnergyDrinks():
-        
-        print (("""\033[1;34;30m
-         _____                                                                                     _____
-        ( ___ )-----------------------------------------------------------------------------------( ___ )
-         |   |                                                                                     |   |
-         |   | _________          _______    _______  _______  _______  _        _______  _______  |   |
-         |   | \__   __/|\     /|(  ____ \  (  ____ \(  ___  )(  ____ )( (    /|(  ____ \(  ____ ) |   |
-         |   |    ) (   | )   ( || (    \/  | (    \/| (   ) || (    )||  \  ( || (    \/| (    )| |   |
-         |   |    | |   | (___) || (__      | |      | |   | || (____)||   \ | || (__    | (____)| |   |
-         |   |    | |   |  ___  ||  __)     | |      | |   | ||     __)| (\ \) ||  __)   |     __) |   |
-         |   |    | |   | (   ) || (        | |      | |   | || (\ (   | | \   || (      | (\ (    |   |
-         |   |    | |   | )   ( || (____/\  | (____/\| (___) || ) \ \__| )  \  || (____/\| ) \ \__ |   |
-         |   |    )_(   |/     \|(_______/  (_______/(_______)|/   \__/|/    )_)(_______/|/   \__/ |   |
-         |___|                                                                                     |___|
-        (_____)-----------------------------------------------------------------------------------(_____)
-\033[0m"""))
-        print ("""\
-                            §=======================================================§
-                            |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
-                            |                                                       |
-                            |         Please select \033[1;34;31m1\033[0m of the \033[1;34;92m3\033[0m Currencies:          |
-                            |                                                       |
-                            |                    \033[1;34;92m1.\033[0m \033[7;34;94m Dollars (USD) \033[0m                 |
-                            |                                                       |
-                            |                    \033[1;34;92m2.\033[0m \033[7;34;94m Pounds (GBP) \033[0m                  |
-                            |                                                       |
-                            |                    \033[1;34;92m3.\033[0m \033[7;34;94m Dirhams (AED) \033[0m                 |
-                            |                                                       |
-                            §=======================================================§
-""")
-
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectcurrency}")
-        if selectcurrency == "1" or selectcurrency.lower() == "dollars":
-                currency = "USD"
-                energyDrink_drinks_2USD()
-        elif selectcurrency == "2" or selectcurrency.lower() == "pounds":
-                currency = "GBP"
-                energyDrink_drinks_2GBP()
-        elif selectcurrency == "3" or selectcurrency.lower() == "dirhams":
-                currency = "AED"
-                energyDrink_drinks_2AED()
-        else: 
-                print ("invalid, defaulting to usd")
-                currency = "USD"
-        
-        print (f"you have picked {currency}")
 
 
 
@@ -2004,15 +1768,15 @@ rates = {
 }
 
 SodaSoftDrinks = {
-            "SS1": {"price": 2.00},
-            "SS2": {"price": 2.00},
-            "SS3": {"price": 2.00},
-            "SS4": {"price": 4.00},
-            "SS5": {"price": 2.00},
-            "SS6": {"price": 2.00},
-            "SS7": {"price": 3.00},
-            "SS8": {"price": 3.00},
-            "SS9": {"price": 3.00},
+            "SS1": {"price": 2.00, "stock" : 0 },
+            "SS2": {"price": 2.00, "stock" : 2 },
+            "SS3": {"price": 2.00, "stock" : 3, "tags": ["Gluten Free"] },
+            "SS4": {"price": 4.00, "stock" : 1, "tags": ["Gluten Free"]},
+            "SS5": {"price": 2.00, "stock" : 6 },
+            "SS6": {"price": 2.00, "stock" : 4 },
+            "SS7": {"price": 3.00, "stock" : 1, "tags": ["Sugar Free"] },
+            "SS8": {"price": 3.00, "stock" : 5, "tags": ["Sugar Free"] },
+            "SS9": {"price": 3.00, "stock" : 3, "tags": ["Sugar Free"] },
 }
 
 def sodaSoftDrinks_drinks_3USD():
@@ -2043,27 +1807,30 @@ def sodaSoftDrinks_drinks_3USD():
         convertedcurrency = {}
         for code, details in SodaSoftDrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m SS1 \033[0m         \033[1;7;36;96m Coke \033[0m         \033[1;7;32;92m {convertedcurrency['SS1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in SodaSoftDrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SS1 \033[0m         \033[1;7;36;96m Coke \033[0m         \033[1;7;32;92m {convertedcurrency['SS1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS2 \033[0m         \033[1;7;36;96m Pepsi \033[0m        \033[1;7;32;92m {convertedcurrency['SS2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m SS2 \033[0m         \033[1;7;36;96m Pepsi \033[0m        \033[1;7;32;92m {convertedcurrency['SS2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS2']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS3 \033[0m         \033[1;7;36;96m Spite \033[0m        \033[1;7;32;92m {convertedcurrency['SS3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m SS3 \033[0m         \033[1;7;36;96m Spite \033[0m        \033[1;7;32;92m {convertedcurrency['SS3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS3']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS4 \033[0m         \033[1;7;36;96m Dr. \033[0m          \033[1;7;32;92m {convertedcurrency['SS4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SS4 \033[0m         \033[1;7;36;96m Dr. \033[0m          \033[1;7;32;92m {convertedcurrency['SS4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS4']} \033[0m        |
                         |                   \033[1;7;36;96m Pepper \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m SS5 \033[0m         \033[1;7;36;96m Mountain \033[0m     \033[1;7;32;92m {convertedcurrency['SS5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 6 \033[0m        |
+                        |     \033[1;7;31;91m SS5 \033[0m         \033[1;7;36;96m Mountain \033[0m     \033[1;7;32;92m {convertedcurrency['SS5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS5']} \033[0m        |
                         |                   \033[1;7;36;96m Dew \033[0m                                       |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SS6 \033[0m         \033[1;7;36;96m Fanta \033[0m        \033[1;7;32;92m {convertedcurrency['SS6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SS6 \033[0m         \033[1;7;36;96m Fanta \033[0m        \033[1;7;32;92m {convertedcurrency['SS6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS6']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS7 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS7']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SS7 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS7']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS7']} \033[0m        |
                         |                   \033[1;7;36;96m Coke \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m SS8 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS8']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m SS8 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS8']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS8']} \033[0m        |
                         |                   \033[1;7;36;96m Pepsi \033[0m                                     |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SS9 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS9']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m SS9 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS9']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SS9']} \033[0m        |
                         |                   \033[1;7;36;96m Dew \033[0m                                       |                                                                                                                            
                         |                                                               |                                      
                         §===============================================================§
@@ -2097,27 +1864,30 @@ def sodaSoftDrinks_drinks_3GBP():
         convertedcurrency = {}
         for code, details in SodaSoftDrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m SS1 \033[0m         \033[1;7;36;96m Coke \033[0m         \033[1;7;32;92m {convertedcurrency['SS1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in SodaSoftDrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SS1 \033[0m         \033[1;7;36;96m Coke \033[0m         \033[1;7;32;92m {convertedcurrency['SS1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS2 \033[0m         \033[1;7;36;96m Pepsi \033[0m        \033[1;7;32;92m {convertedcurrency['SS2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m SS2 \033[0m         \033[1;7;36;96m Pepsi \033[0m        \033[1;7;32;92m {convertedcurrency['SS2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS2']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS3 \033[0m         \033[1;7;36;96m Spite \033[0m        \033[1;7;32;92m {convertedcurrency['SS3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m SS3 \033[0m         \033[1;7;36;96m Spite \033[0m        \033[1;7;32;92m {convertedcurrency['SS3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS3']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS4 \033[0m         \033[1;7;36;96m Dr. \033[0m          \033[1;7;32;92m {convertedcurrency['SS4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SS4 \033[0m         \033[1;7;36;96m Dr. \033[0m          \033[1;7;32;92m {convertedcurrency['SS4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS4']} \033[0m        |
                         |                   \033[1;7;36;96m Pepper \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m SS5 \033[0m         \033[1;7;36;96m Mountain \033[0m     \033[1;7;32;92m {convertedcurrency['SS5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 6 \033[0m        |
+                        |     \033[1;7;31;91m SS5 \033[0m         \033[1;7;36;96m Mountain \033[0m     \033[1;7;32;92m {convertedcurrency['SS5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS5']} \033[0m        |
                         |                   \033[1;7;36;96m Dew \033[0m                                       |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SS6 \033[0m         \033[1;7;36;96m Fanta \033[0m        \033[1;7;32;92m {convertedcurrency['SS6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SS6 \033[0m         \033[1;7;36;96m Fanta \033[0m        \033[1;7;32;92m {convertedcurrency['SS6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS6']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS7 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS7']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SS7 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS7']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS7']} \033[0m        |
                         |                   \033[1;7;36;96m Coke \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m SS8 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS8']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m SS8 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS8']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS8']} \033[0m        |
                         |                   \033[1;7;36;96m Pepsi \033[0m                                     |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SS9 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS9']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m SS9 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS9']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SS9']} \033[0m        |
                         |                   \033[1;7;36;96m Dew \033[0m                                       |                                                                                                                            
                         |                                                               |                                      
                         §===============================================================§
@@ -2151,80 +1921,35 @@ def sodaSoftDrinks_drinks_3AED():
         convertedcurrency = {}
         for code, details in SodaSoftDrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m SS1 \033[0m         \033[1;7;36;96m Coke \033[0m         \033[1;7;32;92m {convertedcurrency['SS1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in SodaSoftDrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SS1 \033[0m         \033[1;7;36;96m Coke \033[0m         \033[1;7;32;92m {convertedcurrency['SS1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['SS1']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS2 \033[0m         \033[1;7;36;96m Pepsi \033[0m        \033[1;7;32;92m {convertedcurrency['SS2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m SS2 \033[0m         \033[1;7;36;96m Pepsi \033[0m        \033[1;7;32;92m {convertedcurrency['SS2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['SS2']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS3 \033[0m         \033[1;7;36;96m Spite \033[0m        \033[1;7;32;92m {convertedcurrency['SS3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m SS3 \033[0m         \033[1;7;36;96m Spite \033[0m        \033[1;7;32;92m {convertedcurrency['SS3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['SS3']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS4 \033[0m         \033[1;7;36;96m Dr. \033[0m          \033[1;7;32;92m {convertedcurrency['SS4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SS4 \033[0m         \033[1;7;36;96m Dr. \033[0m          \033[1;7;32;92m {convertedcurrency['SS4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SS4']} \033[0m        |
                         |                   \033[1;7;36;96m Pepper \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m SS5 \033[0m         \033[1;7;36;96m Mountain \033[0m     \033[1;7;32;92m {convertedcurrency['SS5']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 6 \033[0m        |
+                        |     \033[1;7;31;91m SS5 \033[0m         \033[1;7;36;96m Mountain \033[0m     \033[1;7;32;92m {convertedcurrency['SS5']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['SS5']} \033[0m        |
                         |                   \033[1;7;36;96m Dew \033[0m                                       |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SS6 \033[0m         \033[1;7;36;96m Fanta \033[0m        \033[1;7;32;92m {convertedcurrency['SS6']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SS6 \033[0m         \033[1;7;36;96m Fanta \033[0m        \033[1;7;32;92m {convertedcurrency['SS6']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['SS6']} \033[0m        |
                         |                                                               |
-                        |     \033[1;7;31;91m SS7 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS7']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SS7 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS7']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SS7']} \033[0m        |
                         |                   \033[1;7;36;96m Coke \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m SS8 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS8']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m SS8 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS8']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SS8']} \033[0m        |
                         |                   \033[1;7;36;96m Pepsi \033[0m                                     |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m SS9 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS9']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m SS9 \033[0m         \033[1;7;36;96m Diet \033[0m         \033[1;7;32;92m {convertedcurrency['SS9']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SS9']} \033[0m        |
                         |                   \033[1;7;36;96m Dew \033[0m                                       |                                                                                                                            
                         |                                                               |                                      
                         §===============================================================§
 """)
 
-def CurrencyDisplay_SodaSoftDrinks():
-        
-        print (("""\033[1;34;30m
-         _____                                                                                     _____
-        ( ___ )-----------------------------------------------------------------------------------( ___ )
-         |   |                                                                                     |   |
-         |   | _________          _______    _______  _______  _______  _        _______  _______  |   |
-         |   | \__   __/|\     /|(  ____ \  (  ____ \(  ___  )(  ____ )( (    /|(  ____ \(  ____ ) |   |
-         |   |    ) (   | )   ( || (    \/  | (    \/| (   ) || (    )||  \  ( || (    \/| (    )| |   |
-         |   |    | |   | (___) || (__      | |      | |   | || (____)||   \ | || (__    | (____)| |   |
-         |   |    | |   |  ___  ||  __)     | |      | |   | ||     __)| (\ \) ||  __)   |     __) |   |
-         |   |    | |   | (   ) || (        | |      | |   | || (\ (   | | \   || (      | (\ (    |   |
-         |   |    | |   | )   ( || (____/\  | (____/\| (___) || ) \ \__| )  \  || (____/\| ) \ \__ |   |
-         |   |    )_(   |/     \|(_______/  (_______/(_______)|/   \__/|/    )_)(_______/|/   \__/ |   |
-         |___|                                                                                     |___|
-        (_____)-----------------------------------------------------------------------------------(_____)
-\033[0m"""))
-        print ("""\
-                            §=======================================================§
-                            |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
-                            |                                                       |
-                            |         Please select \033[1;34;31m1\033[0m of the \033[1;34;92m3\033[0m Currencies:          |
-                            |                                                       |
-                            |                    \033[1;34;92m1.\033[0m \033[7;34;94m Dollars (USD) \033[0m                 |
-                            |                                                       |
-                            |                    \033[1;34;92m2.\033[0m \033[7;34;94m Pounds (GBP) \033[0m                  |
-                            |                                                       |
-                            |                    \033[1;34;92m3.\033[0m \033[7;34;94m Dirhams (AED) \033[0m                 |
-                            |                                                       |
-                            §=======================================================§
-""")
-
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectcurrency}")
-        if selectcurrency == "1" or selectcurrency.lower() == "dollars":
-                currency = "USD"
-                sodaSoftDrinks_drinks_3USD()
-        elif selectcurrency == "2" or selectcurrency.lower() == "pounds":
-                currency = "GBP"
-                sodaSoftDrinks_drinks_3GBP()
-        elif selectcurrency == "3" or selectcurrency.lower() == "dirhams":
-                currency = "AED"
-                sodaSoftDrinks_drinks_3AED()
-        else: 
-                print ("invalid, defaulting to usd")
-                currency = "USD"
-        
-        print (f"you have picked {currency}")
 
 
 
@@ -2304,7 +2029,10 @@ def sportsHyd_drinks_4USD():
         convertedcurrency = {}
         for code, details in sportsdrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m H1 \033[0m          \033[1;7;36;96m Gatorade \033[0m      \033[1;7;32;92m {convertedcurrency['H1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in sportsdrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m H1 \033[0m          \033[1;7;36;96m Gatorade \033[0m      \033[1;7;32;92m {convertedcurrency['H1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['H1']} \033[0m        |
                         |                                                               |                                                              
                         §===============================================================§
 """)
@@ -2337,7 +2065,10 @@ def sportsHyd_drinks_4GBP():
         convertedcurrency = {}
         for code, details in sportsdrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m H1 \033[0m          \033[1;7;36;96m Gatorade \033[0m      \033[1;7;32;92m {convertedcurrency['H1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in sportsdrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m H1 \033[0m          \033[1;7;36;96m Gatorade \033[0m      \033[1;7;32;92m {convertedcurrency['H1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['H1']} \033[0m        |
                         |                                                               |                                                              
                         §===============================================================§
 """)
@@ -2370,7 +2101,10 @@ def sportsHyd_drinks_4AED():
         convertedcurrency = {}
         for code, details in sportsdrinks.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m H1 \033[0m          \033[1;7;36;96m Gatorade \033[0m     \033[1;7;32;92m {convertedcurrency['H1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in sportsdrinks.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m H1 \033[0m          \033[1;7;36;96m Gatorade \033[0m     \033[1;7;32;92m {convertedcurrency['H1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['H1']} \033[0m        |
                         |                                                               |                                                              
                         §===============================================================§
 """)
@@ -2476,21 +2210,24 @@ def iceTea_drinks_5USD():
         convertedcurrency = {}
         for code, details in icetea.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m T1 \033[0m          \033[1;7;36;96m Gold \033[0m         \033[1;7;32;92m {convertedcurrency['T1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+        newstock = {}
+        for code, details in icetea.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m T1 \033[0m          \033[1;7;36;96m Gold \033[0m         \033[1;7;32;92m {convertedcurrency['T1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['T1']} \033[0m        |
                         |                   \033[1;7;36;96m Peak \033[0m                                      |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T2 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m T2 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['T2']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Peach) \033[0m                                    |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T3 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m T3 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['T3']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Lemon) \033[0m                                    |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T4 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m T4 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['T4']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Strawberry \033[0m                                |
@@ -2527,21 +2264,24 @@ def iceTea_drinks_5GBP():
         convertedcurrency = {}
         for code, details in icetea.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m T1 \033[0m          \033[1;7;36;96m Gold \033[0m         \033[1;7;32;92m {convertedcurrency['T1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+        newstock = {}
+        for code, details in icetea.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m T1 \033[0m          \033[1;7;36;96m Gold \033[0m         \033[1;7;32;92m {convertedcurrency['T1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['T1']} \033[0m        |
                         |                   \033[1;7;36;96m Peak \033[0m                                      |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T2 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m T2 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['T2']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Peach) \033[0m                                    |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T3 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m T3 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['T3']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Lemon) \033[0m                                    |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T4 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m T4 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['T4']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Strawberry \033[0m                                |
@@ -2578,21 +2318,24 @@ def iceTea_drinks_5AED():
         convertedcurrency = {}
         for code, details in icetea.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m T1 \033[0m          \033[1;7;36;96m Gold \033[0m         \033[1;7;32;92m {convertedcurrency['T1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 2 \033[0m        |
+        newstock = {}
+        for code, details in icetea.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m T1 \033[0m          \033[1;7;36;96m Gold \033[0m         \033[1;7;32;92m {convertedcurrency['T1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['T1']} \033[0m        |
                         |                   \033[1;7;36;96m Peak \033[0m                                      |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T2 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m T2 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['T2']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Peach) \033[0m                                    |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T3 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m T3 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['T3']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Lemon) \033[0m                                    |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m T4 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m T4 \033[0m          \033[1;7;36;96m Lipton \033[0m       \033[1;7;32;92m {convertedcurrency['T4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['T4']} \033[0m        |
                         |                   \033[1;7;36;96m Ice \033[0m                                       |  
                         |                   \033[1;7;36;96m Tea  \033[0m                                      |                                                               
                         |                   \033[1;7;36;96m(Strawberry \033[0m                                |
@@ -2695,19 +2438,22 @@ def fruitJuice_drinks_6USD():
         convertedcurrency = {}
         for code, details in fruitjuice.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m F1 \033[0m           \033[1;7;36;96m Tropicana \033[0m    \033[1;7;32;92m {convertedcurrency['F1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 10 \033[0m       |
+        newstock = {}
+        for code, details in fruitjuice.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m F1 \033[0m           \033[1;7;36;96m Tropicana \033[0m    \033[1;7;32;92m {convertedcurrency['F1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['F1']} \033[0m       |
                         |                    \033[1;7;36;96m Mango \033[0m                                    |
                         |                    \033[1;7;36;96m Juice \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m F2 \033[0m           \033[1;7;36;96m Newman's \033[0m     \033[1;7;32;92m {convertedcurrency['F2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m F2 \033[0m           \033[1;7;36;96m Newman's \033[0m     \033[1;7;32;92m {convertedcurrency['F2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['F2']} \033[0m        |
                         |                    \033[1;7;36;96m Orange \033[0m                                   |
                         |                    \033[1;7;36;96m Juice \033[0m                                    |                        
                         |                                                               |
-                        |     \033[1;7;31;91m F3 \033[0m           \033[1;7;36;96m Minute \033[0m       \033[1;7;32;92m {convertedcurrency['F3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m F3 \033[0m           \033[1;7;36;96m Minute \033[0m       \033[1;7;32;92m {convertedcurrency['F3']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['F3']} \033[0m        |
                         |                    \033[1;7;36;96m Made \033[0m                                     |
                         |                    \033[1;7;36;96m Peach \033[0m                                    |                        
                         |                                                               |               
-                        |     \033[1;7;31;91m F4 \033[0m           \033[1;7;36;96m Simply \033[0m       \033[1;7;32;92m {convertedcurrency['F4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m F4 \033[0m           \033[1;7;36;96m Simply \033[0m       \033[1;7;32;92m {convertedcurrency['F4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['F4']} \033[0m        |
                         |                    \033[1;7;36;96m Lemonade \033[0m                                 |                                                               
                         |                                                               |
                         §===============================================================§
@@ -2741,19 +2487,22 @@ def fruitJuice_drinks_6GBP():
         convertedcurrency = {}
         for code, details in fruitjuice.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m F1 \033[0m           \033[1;7;36;96m Tropicana \033[0m    \033[1;7;32;92m {convertedcurrency['F1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 10 \033[0m       |
+        newstock = {}
+        for code, details in fruitjuice.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m F1 \033[0m           \033[1;7;36;96m Tropicana \033[0m    \033[1;7;32;92m {convertedcurrency['F1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['F1']} \033[0m       |
                         |                    \033[1;7;36;96m Mango \033[0m                                    |
                         |                    \033[1;7;36;96m Juice \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m F2 \033[0m           \033[1;7;36;96m Newman's \033[0m     \033[1;7;32;92m {convertedcurrency['F2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m F2 \033[0m           \033[1;7;36;96m Newman's \033[0m     \033[1;7;32;92m {convertedcurrency['F2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['F2']} \033[0m        |
                         |                    \033[1;7;36;96m Orange \033[0m                                   |
                         |                    \033[1;7;36;96m Juice \033[0m                                    |                        
                         |                                                               |
-                        |     \033[1;7;31;91m F3 \033[0m           \033[1;7;36;96m Minute \033[0m       \033[1;7;32;92m {convertedcurrency['F3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m F3 \033[0m           \033[1;7;36;96m Minute \033[0m       \033[1;7;32;92m {convertedcurrency['F3']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['F3']} \033[0m        |
                         |                    \033[1;7;36;96m Made \033[0m                                     |
                         |                    \033[1;7;36;96m Peach \033[0m                                    |                        
                         |                                                               |               
-                        |     \033[1;7;31;91m F4 \033[0m           \033[1;7;36;96m Simply \033[0m       \033[1;7;32;92m {convertedcurrency['F4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m F4 \033[0m           \033[1;7;36;96m Simply \033[0m       \033[1;7;32;92m {convertedcurrency['F4']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['F4']} \033[0m        |
                         |                    \033[1;7;36;96m Lemonade \033[0m                                 |                                                               
                         |                                                               |
                         §===============================================================§
@@ -2787,19 +2536,22 @@ def fruitJuice_drinks_6AED():
         convertedcurrency = {}
         for code, details in fruitjuice.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m F1 \033[0m           \033[1;7;36;96m Tropicana \033[0m    \033[1;7;32;92m {convertedcurrency['F1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 10 \033[0m       |
+        newstock = {}
+        for code, details in fruitjuice.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m F1 \033[0m           \033[1;7;36;96m Tropicana \033[0m    \033[1;7;32;92m {convertedcurrency['F1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['F1']} \033[0m       |
                         |                    \033[1;7;36;96m Mango \033[0m                                    |
                         |                    \033[1;7;36;96m Juice \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m F2 \033[0m           \033[1;7;36;96m Newman's \033[0m     \033[1;7;32;92m {convertedcurrency['F2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m F2 \033[0m           \033[1;7;36;96m Newman's \033[0m     \033[1;7;32;92m {convertedcurrency['F2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['F2']} \033[0m        |
                         |                    \033[1;7;36;96m Orange \033[0m                                   |
                         |                    \033[1;7;36;96m Juice \033[0m                                    |                        
                         |                                                               |
-                        |     \033[1;7;31;91m F3 \033[0m           \033[1;7;36;96m Minute \033[0m       \033[1;7;32;92m {convertedcurrency['F3']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m F3 \033[0m           \033[1;7;36;96m Minute \033[0m       \033[1;7;32;92m {convertedcurrency['F3']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['F3']} \033[0m        |
                         |                    \033[1;7;36;96m Made \033[0m                                     |
                         |                    \033[1;7;36;96m Peach \033[0m                                    |                        
                         |                                                               |               
-                        |     \033[1;7;31;91m F4 \033[0m           \033[1;7;36;96m Simply \033[0m       \033[1;7;32;92m {convertedcurrency['F4']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m F4 \033[0m           \033[1;7;36;96m Simply \033[0m       \033[1;7;32;92m {convertedcurrency['F4']:.2f}{symbols['AED']} \033[0m       \033[1;7;31;91m {newstock['F4']} \033[0m        |
                         |                    \033[1;7;36;96m Lemonade \033[0m                                 |                                                               
                         |                                                               |
                         §===============================================================§
@@ -2888,11 +2640,14 @@ def coffee_drinks_7USD():
                         |                                                               |""")
         convertedcurrency = {}
         for code, details in coffee.items():
-                        convertedcurrency[code] = round(details["price"] * rates["USD"], 2)             
-        print(f"""                        |     \033[1;7;31;91m CO1 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 0 \033[0m        |
+                        convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
+        newstock = {}
+        for code, details in coffee.items():
+                newstock[code] = (details["stock"])       
+        print(f"""                        |     \033[1;7;31;91m CO1 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO1']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CO1']} \033[0m        |
                         |                    \033[1;7;36;96m (Hot) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m CO2 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m CO2 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO2']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['CO2']} \033[0m        |
                         |                    \033[1;7;36;96m (Iced) \033[0m                                   |
                         |                                                               |
                         §===============================================================§
@@ -2925,11 +2680,14 @@ def coffee_drinks_7GBP():
                         |                                                               |""")
         convertedcurrency = {}
         for code, details in coffee.items():
-                        convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)             
-        print(f"""                        |     \033[1;7;31;91m CO1 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 0 \033[0m        |
+                        convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)   
+        newstock = {}
+        for code, details in coffee.items():
+                newstock[code] = (details["stock"])           
+        print(f"""                        |     \033[1;7;31;91m CO1 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO1']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CO1']} \033[0m        |
                         |                    \033[1;7;36;96m (Hot) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m CO2 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m CO2 \033[0m          \033[1;7;36;96m Coffee \033[0m       \033[1;7;32;92m {convertedcurrency['CO2']:.2f}{symbols['GBP']} \033[0m          \033[1;7;31;91m {newstock['CO2']} \033[0m        |
                         |                    \033[1;7;36;96m (Iced) \033[0m                                   |
                         |                                                               |
                         §===============================================================§
@@ -2962,11 +2720,14 @@ def coffee_drinks_7AED():
                         |                                                               |""")
         convertedcurrency = {}
         for code, details in coffee.items():
-                        convertedcurrency[code] = round(details["price"] * rates["AED"], 2)             
-        print(f"""                        |     \033[1;7;31;91m CO1 \033[0m          \033[1;7;36;96m Coffee \033[0m      \033[1;7;32;92m {convertedcurrency['CO1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 0 \033[0m        |
+                        convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
+        newstock = {}
+        for code, details in coffee.items():
+                newstock[code] = (details["stock"])             
+        print(f"""                        |     \033[1;7;31;91m CO1 \033[0m          \033[1;7;36;96m Coffee \033[0m      \033[1;7;32;92m {convertedcurrency['CO1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['CO1']} \033[0m        |
                         |                    \033[1;7;36;96m (Hot) \033[0m                                    |
                         |                                                               |
-                        |     \033[1;7;31;91m CO2 \033[0m          \033[1;7;36;96m Coffee \033[0m      \033[1;7;32;92m {convertedcurrency['CO2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m CO2 \033[0m          \033[1;7;36;96m Coffee \033[0m      \033[1;7;32;92m {convertedcurrency['CO2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['CO2']} \033[0m        |
                         |                    \033[1;7;36;96m (Iced) \033[0m                                   |
                         |                                                               |
                         §===============================================================§
@@ -3083,32 +2844,35 @@ def healthyOptions_spec_1USD():
         convertedcurrency = {}
         for code, details in healthyoptions.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m EG1 \033[0m         \033[1;7;36;96m Clif \033[0m         \033[1;7;32;92m {convertedcurrency['EG1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+        newstock = {}
+        for code, details in healthyoptions.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m EG1 \033[0m         \033[1;7;36;96m Clif \033[0m         \033[1;7;32;92m {convertedcurrency['EG1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['EG1']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG2 \033[0m         \033[1;7;36;96m Nature \033[0m       \033[1;7;32;92m {convertedcurrency['EG2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m EG2 \033[0m         \033[1;7;36;96m Nature \033[0m       \033[1;7;32;92m {convertedcurrency['EG2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['EG2']} \033[0m        |
                         |                   \033[1;7;36;96m Valley \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG3 \033[0m         \033[1;7;36;96m Granola \033[0m      \033[1;7;32;92m {convertedcurrency['EG3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m EG3 \033[0m         \033[1;7;36;96m Granola \033[0m      \033[1;7;32;92m {convertedcurrency['EG3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['EG3']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG4 \033[0m         \033[1;7;36;96m Lara \033[0m         \033[1;7;32;92m {convertedcurrency['EG4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EG4 \033[0m         \033[1;7;36;96m Lara \033[0m         \033[1;7;32;92m {convertedcurrency['EG4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['EG4']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
                         |             Select a \033[1;34;31mtype\033[0m of \033[4;34;92mJerky or Meat Snack\033[0m:             |
                         |                                                               |
                         |     \033[1;34;97mCode:          Name:         Price:           Stock:\033[0m      |
                         |                                                               |
-                        |     \033[1;7;31;91m JM1 \033[0m         \033[1;7;36;96m Slim \033[0m         \033[1;7;32;92m {convertedcurrency['JM1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 7 \033[0m        |
+                        |     \033[1;7;31;91m JM1 \033[0m         \033[1;7;36;96m Slim \033[0m         \033[1;7;32;92m {convertedcurrency['JM1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['JM1']} \033[0m        |
                         |                   \033[1;7;36;96m Jim \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m JM2 \033[0m         \033[1;7;36;96m Jack \033[0m         \033[1;7;32;92m {convertedcurrency['JM2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m JM2 \033[0m         \033[1;7;36;96m Jack \033[0m         \033[1;7;32;92m {convertedcurrency['JM2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['JM2']} \033[0m        |
                         |                   \033[1;7;36;96m Link's \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m JM3 \033[0m         \033[1;7;36;96m Perky \033[0m        \033[1;7;32;92m {convertedcurrency['JM3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m JM3 \033[0m         \033[1;7;36;96m Perky \033[0m        \033[1;7;32;92m {convertedcurrency['JM3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['JM3']} \033[0m        |
                         |                   \033[1;7;36;96m Jerky \033[0m                                     |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m JM4 \033[0m         \033[1;7;36;96m Oberto \033[0m       \033[1;7;32;92m {convertedcurrency['JM4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m JM4 \033[0m         \033[1;7;36;96m Oberto \033[0m       \033[1;7;32;92m {convertedcurrency['JM4']:.2f}{symbols['USD']} \033[0m          \033[1;7;31;91m {newstock['JM4']} \033[0m        |
                         |                                                               |
                         §===============================================================§
 """)
@@ -3141,32 +2905,35 @@ def healthyOptions_spec_1GBP():
         convertedcurrency = {}
         for code, details in healthyoptions.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m EG1 \033[0m         \033[1;7;36;96m Clif \033[0m         \033[1;7;32;92m {convertedcurrency['EG1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+        newstock = {}
+        for code, details in healthyoptions.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m EG1 \033[0m         \033[1;7;36;96m Clif \033[0m         \033[1;7;32;92m {convertedcurrency['EG1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['EG1']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG2 \033[0m         \033[1;7;36;96m Nature \033[0m       \033[1;7;32;92m {convertedcurrency['EG2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m EG2 \033[0m         \033[1;7;36;96m Nature \033[0m       \033[1;7;32;92m {convertedcurrency['EG2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['EG2']} \033[0m        |
                         |                   \033[1;7;36;96m Valley \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG3 \033[0m         \033[1;7;36;96m Granola \033[0m      \033[1;7;32;92m {convertedcurrency['EG3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m EG3 \033[0m         \033[1;7;36;96m Granola \033[0m      \033[1;7;32;92m {convertedcurrency['EG3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['EG3']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG4 \033[0m         \033[1;7;36;96m Lara \033[0m         \033[1;7;32;92m {convertedcurrency['EG4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EG4 \033[0m         \033[1;7;36;96m Lara \033[0m         \033[1;7;32;92m {convertedcurrency['EG4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['EG4']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
                         |             Select a \033[1;34;31mtype\033[0m of \033[4;34;92mJerky or Meat Snack\033[0m:             |
                         |                                                               |
                         |     \033[1;34;97mCode:          Name:         Price:           Stock:\033[0m      |
                         |                                                               |
-                        |     \033[1;7;31;91m JM1 \033[0m         \033[1;7;36;96m Slim \033[0m         \033[1;7;32;92m {convertedcurrency['JM1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 7 \033[0m        |
+                        |     \033[1;7;31;91m JM1 \033[0m         \033[1;7;36;96m Slim \033[0m         \033[1;7;32;92m {convertedcurrency['JM1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['JM1']} \033[0m        |
                         |                   \033[1;7;36;96m Jim \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m JM2 \033[0m         \033[1;7;36;96m Jack \033[0m         \033[1;7;32;92m {convertedcurrency['JM2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m JM2 \033[0m         \033[1;7;36;96m Jack \033[0m         \033[1;7;32;92m {convertedcurrency['JM2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['JM2']} \033[0m        |
                         |                   \033[1;7;36;96m Link's \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m JM3 \033[0m         \033[1;7;36;96m Perky \033[0m        \033[1;7;32;92m {convertedcurrency['JM3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m JM3 \033[0m         \033[1;7;36;96m Perky \033[0m        \033[1;7;32;92m {convertedcurrency['JM3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['JM3']} \033[0m        |
                         |                   \033[1;7;36;96m Jerky \033[0m                                     |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m JM4 \033[0m         \033[1;7;36;96m Oberto \033[0m       \033[1;7;32;92m {convertedcurrency['JM4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m JM4 \033[0m         \033[1;7;36;96m Oberto \033[0m       \033[1;7;32;92m {convertedcurrency['JM4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['JM4']} \033[0m        |
                         |                                                               |
                         §===============================================================§
 """)
@@ -3199,32 +2966,35 @@ def healthyOptions_spec_1AED():
         convertedcurrency = {}
         for code, details in healthyoptions.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m EG1 \033[0m         \033[1;7;36;96m Clif \033[0m        \033[1;7;32;92m {convertedcurrency['EG1']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m 4 \033[0m        |
+        newstock = {}
+        for code, details in healthyoptions.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m EG1 \033[0m         \033[1;7;36;96m Clif \033[0m        \033[1;7;32;92m {convertedcurrency['EG1']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m {newstock['EG1']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG2 \033[0m         \033[1;7;36;96m Nature \033[0m      \033[1;7;32;92m {convertedcurrency['EG2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m EG2 \033[0m         \033[1;7;36;96m Nature \033[0m      \033[1;7;32;92m {convertedcurrency['EG2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['EG2']} \033[0m        |
                         |                   \033[1;7;36;96m Valley \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG3 \033[0m         \033[1;7;36;96m Granola \033[0m     \033[1;7;32;92m {convertedcurrency['EG3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m EG3 \033[0m         \033[1;7;36;96m Granola \033[0m     \033[1;7;32;92m {convertedcurrency['EG3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['EG3']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m EG4 \033[0m         \033[1;7;36;96m Lara \033[0m        \033[1;7;32;92m {convertedcurrency['EG4']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m EG4 \033[0m         \033[1;7;36;96m Lara \033[0m        \033[1;7;32;92m {convertedcurrency['EG4']:.2f}{symbols['AED']} \033[0m          \033[1;7;31;91m {newstock['EG4']} \033[0m        |
                         |                   \033[1;7;36;96m Bar \033[0m                                       |  
                         |                                                               |
                         |             Select a \033[1;34;31mtype\033[0m of \033[4;34;92mJerky or Meat Snack\033[0m:             |
                         |                                                               |
                         |     \033[1;34;97mCode:          Name:         Price:           Stock:\033[0m      |
                         |                                                               |
-                        |     \033[1;7;31;91m JM1 \033[0m         \033[1;7;36;96m Slim \033[0m        \033[1;7;32;92m {convertedcurrency['JM1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 7 \033[0m        |
+                        |     \033[1;7;31;91m JM1 \033[0m         \033[1;7;36;96m Slim \033[0m        \033[1;7;32;92m {convertedcurrency['JM1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['JM1']} \033[0m        |
                         |                   \033[1;7;36;96m Jim \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m JM2 \033[0m         \033[1;7;36;96m Jack \033[0m        \033[1;7;32;92m {convertedcurrency['JM2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m JM2 \033[0m         \033[1;7;36;96m Jack \033[0m        \033[1;7;32;92m {convertedcurrency['JM2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['JM2']} \033[0m        |
                         |                   \033[1;7;36;96m Link's \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m JM3 \033[0m         \033[1;7;36;96m Perky \033[0m       \033[1;7;32;92m {convertedcurrency['JM3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m JM3 \033[0m         \033[1;7;36;96m Perky \033[0m       \033[1;7;32;92m {convertedcurrency['JM3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['JM3']} \033[0m        |
                         |                   \033[1;7;36;96m Jerky \033[0m                                     |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m JM4 \033[0m         \033[1;7;36;96m Oberto \033[0m      \033[1;7;32;92m {convertedcurrency['JM4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m JM4 \033[0m         \033[1;7;36;96m Oberto \033[0m      \033[1;7;32;92m {convertedcurrency['JM4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['JM4']} \033[0m        |
                         |                                                               |
                         §===============================================================§
 """)
@@ -3338,27 +3108,30 @@ def instantNoodles_spec_2USD():
         convertedcurrency = {}
         for code, details in instantnoodles.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m IN1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['IN1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+        newstock = {}
+        for code, details in instantnoodles.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m IN1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['IN1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['IN1']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |  
                         |                                                               |
-                        |     \033[1;7;31;91m IN2 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['IN2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m IN2 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['IN2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['IN2']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN3 \033[0m         \033[1;7;36;96m Curry \033[0m        \033[1;7;32;92m {convertedcurrency['IN3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m IN3 \033[0m         \033[1;7;36;96m Curry \033[0m        \033[1;7;32;92m {convertedcurrency['IN3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['IN3']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN4 \033[0m         \033[1;7;36;96m Chili \033[0m        \033[1;7;32;92m {convertedcurrency['IN4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m IN4 \033[0m         \033[1;7;36;96m Chili \033[0m        \033[1;7;32;92m {convertedcurrency['IN4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['IN4']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |  
                         |                                                               |
-                        |     \033[1;7;31;91m IN5 \033[0m         \033[1;7;36;96m Mushroom \033[0m     \033[1;7;32;92m {convertedcurrency['IN5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 6 \033[0m        |
+                        |     \033[1;7;31;91m IN5 \033[0m         \033[1;7;36;96m Mushroom \033[0m     \033[1;7;32;92m {convertedcurrency['IN5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['IN5']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN6 \033[0m         \033[1;7;36;96m Shrimp \033[0m       \033[1;7;32;92m {convertedcurrency['IN6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m IN6 \033[0m         \033[1;7;36;96m Shrimp \033[0m       \033[1;7;32;92m {convertedcurrency['IN6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['IN6']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |                        
@@ -3393,27 +3166,30 @@ def instantNoodles_spec_2GBP():
         convertedcurrency = {}
         for code, details in instantnoodles.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m IN1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['IN1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+        newstock = {}
+        for code, details in instantnoodles.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m IN1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['IN1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['IN1']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |  
                         |                                                               |
-                        |     \033[1;7;31;91m IN2 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['IN2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m IN2 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['IN2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['IN2']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN3 \033[0m         \033[1;7;36;96m Curry \033[0m        \033[1;7;32;92m {convertedcurrency['IN3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m IN3 \033[0m         \033[1;7;36;96m Curry \033[0m        \033[1;7;32;92m {convertedcurrency['IN3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['IN3']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN4 \033[0m         \033[1;7;36;96m Chili \033[0m        \033[1;7;32;92m {convertedcurrency['IN4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m IN4 \033[0m         \033[1;7;36;96m Chili \033[0m        \033[1;7;32;92m {convertedcurrency['IN4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['IN4']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |  
                         |                                                               |
-                        |     \033[1;7;31;91m IN5 \033[0m         \033[1;7;36;96m Mushroom \033[0m     \033[1;7;32;92m {convertedcurrency['IN5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 6 \033[0m        |
+                        |     \033[1;7;31;91m IN5 \033[0m         \033[1;7;36;96m Mushroom \033[0m     \033[1;7;32;92m {convertedcurrency['IN5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['IN5']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN6 \033[0m         \033[1;7;36;96m Shrimp \033[0m       \033[1;7;32;92m {convertedcurrency['IN6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m IN6 \033[0m         \033[1;7;36;96m Shrimp \033[0m       \033[1;7;32;92m {convertedcurrency['IN6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['IN6']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |                        
@@ -3448,27 +3224,30 @@ def instantNoodles_spec_2AED():
         convertedcurrency = {}
         for code, details in instantnoodles.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m IN1 \033[0m         \033[1;7;36;96m Chicken \033[0m     \033[1;7;32;92m {convertedcurrency['IN1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 4 \033[0m        |
+        newstock = {}
+        for code, details in instantnoodles.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m IN1 \033[0m         \033[1;7;36;96m Chicken \033[0m     \033[1;7;32;92m {convertedcurrency['IN1']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['IN1']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |  
                         |                                                               |
-                        |     \033[1;7;31;91m IN2 \033[0m         \033[1;7;36;96m Beef \033[0m        \033[1;7;32;92m {convertedcurrency['IN2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m IN2 \033[0m         \033[1;7;36;96m Beef \033[0m        \033[1;7;32;92m {convertedcurrency['IN2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['IN2']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN3 \033[0m         \033[1;7;36;96m Curry \033[0m       \033[1;7;32;92m {convertedcurrency['IN3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m IN3 \033[0m         \033[1;7;36;96m Curry \033[0m       \033[1;7;32;92m {convertedcurrency['IN3']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['IN3']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN4 \033[0m         \033[1;7;36;96m Chili \033[0m       \033[1;7;32;92m {convertedcurrency['IN4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m IN4 \033[0m         \033[1;7;36;96m Chili \033[0m       \033[1;7;32;92m {convertedcurrency['IN4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['IN4']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |  
                         |                                                               |
-                        |     \033[1;7;31;91m IN5 \033[0m         \033[1;7;36;96m Mushroom \033[0m    \033[1;7;32;92m {convertedcurrency['IN5']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 6 \033[0m        |
+                        |     \033[1;7;31;91m IN5 \033[0m         \033[1;7;36;96m Mushroom \033[0m    \033[1;7;32;92m {convertedcurrency['IN5']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['IN5']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |
-                        |     \033[1;7;31;91m IN6 \033[0m         \033[1;7;36;96m Shrimp \033[0m      \033[1;7;32;92m {convertedcurrency['IN6']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m IN6 \033[0m         \033[1;7;36;96m Shrimp \033[0m      \033[1;7;32;92m {convertedcurrency['IN6']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['IN6']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                   \033[1;7;36;96m Noodles \033[0m                                   |
                         |                                                               |                        
@@ -3592,35 +3371,38 @@ def sandWraps_spec_3USD():
         convertedcurrency = {}
         for code, details in sandwichswraps.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m SW1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['SW1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in sandwichswraps.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SW1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['SW1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SW1']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW2 \033[0m         \033[1;7;36;96m Seafood \033[0m      \033[1;7;32;92m {convertedcurrency['SW2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SW2 \033[0m         \033[1;7;36;96m Seafood \033[0m      \033[1;7;32;92m {convertedcurrency['SW2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SW2']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW3 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['SW3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m SW3 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['SW3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SW3']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW4 \033[0m         \033[1;7;36;96m Cheese \033[0m       \033[1;7;32;92m {convertedcurrency['SW4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SW4 \033[0m         \033[1;7;36;96m Cheese \033[0m       \033[1;7;32;92m {convertedcurrency['SW4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SW4']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW5 \033[0m         \033[1;7;36;96m Salmon \033[0m       \033[1;7;32;92m {convertedcurrency['SW5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SW5 \033[0m         \033[1;7;36;96m Salmon \033[0m       \033[1;7;32;92m {convertedcurrency['SW5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['SW5']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
                         |                   Select a \033[1;34;31mtype\033[0m of \033[4;34;92mWrap\033[0m:                      |
                         |                                                               |
                         |     \033[1;34;97mCode:         Name:          Price:           Stock:\033[0m      |
                         |                                                               |
-                        |     \033[1;7;31;91m WP1 \033[0m         \033[1;7;36;96m Grilled \033[0m      \033[1;7;32;92m {convertedcurrency['WP1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m WP1 \033[0m         \033[1;7;36;96m Grilled \033[0m      \033[1;7;32;92m {convertedcurrency['WP1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['WP1']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m WP2 \033[0m         \033[1;7;36;96m Tuna \033[0m         \033[1;7;32;92m {convertedcurrency['WP2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 8 \033[0m        |
+                        |     \033[1;7;31;91m WP2 \033[0m         \033[1;7;36;96m Tuna \033[0m         \033[1;7;32;92m {convertedcurrency['WP2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['WP2']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m WP3 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['WP3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m WP3 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['WP3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['WP3']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m WP4 \033[0m         \033[1;7;36;96m Spud \033[0m         \033[1;7;32;92m {convertedcurrency['WP4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m WP4 \033[0m         \033[1;7;36;96m Spud \033[0m         \033[1;7;32;92m {convertedcurrency['WP4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['WP4']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |                                                               
                         |                                                               |
                         §===============================================================§
@@ -3654,35 +3436,38 @@ def sandWraps_spec_3GBP():
         convertedcurrency = {}
         for code, details in sandwichswraps.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m SW1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['SW1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in sandwichswraps.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SW1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['SW1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SW1']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW2 \033[0m         \033[1;7;36;96m Seafood \033[0m      \033[1;7;32;92m {convertedcurrency['SW2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SW2 \033[0m         \033[1;7;36;96m Seafood \033[0m      \033[1;7;32;92m {convertedcurrency['SW2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SW2']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW3 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['SW3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m SW3 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['SW3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SW3']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW4 \033[0m         \033[1;7;36;96m Cheese \033[0m       \033[1;7;32;92m {convertedcurrency['SW4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SW4 \033[0m         \033[1;7;36;96m Cheese \033[0m       \033[1;7;32;92m {convertedcurrency['SW4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SW4']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW5 \033[0m         \033[1;7;36;96m Salmon \033[0m       \033[1;7;32;92m {convertedcurrency['SW5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SW5 \033[0m         \033[1;7;36;96m Salmon \033[0m       \033[1;7;32;92m {convertedcurrency['SW5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['SW5']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
                         |                   Select a \033[1;34;31mtype\033[0m of \033[4;34;92mWrap\033[0m:                      |
                         |                                                               |
                         |     \033[1;34;97mCode:          Name:         Price:           Stock:\033[0m      |
                         |                                                               |
-                        |     \033[1;7;31;91m WP1 \033[0m         \033[1;7;36;96m Grilled \033[0m      \033[1;7;32;92m {convertedcurrency['WP1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m WP1 \033[0m         \033[1;7;36;96m Grilled \033[0m      \033[1;7;32;92m {convertedcurrency['WP1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['WP1']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m WP2 \033[0m         \033[1;7;36;96m Tuna \033[0m         \033[1;7;32;92m {convertedcurrency['WP2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 8 \033[0m        |
+                        |     \033[1;7;31;91m WP2 \033[0m         \033[1;7;36;96m Tuna \033[0m         \033[1;7;32;92m {convertedcurrency['WP2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['WP2']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m WP3 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['WP3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m WP3 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['WP3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['WP3']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m WP4 \033[0m         \033[1;7;36;96m Spud \033[0m         \033[1;7;32;92m {convertedcurrency['WP4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m WP4 \033[0m         \033[1;7;36;96m Spud \033[0m         \033[1;7;32;92m {convertedcurrency['WP4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['WP4']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |                                                               
                         |                                                               |
                         §===============================================================§
@@ -3716,35 +3501,38 @@ def sandWraps_spec_3AED():
         convertedcurrency = {}
         for code, details in sandwichswraps.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m SW1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['SW1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 0 \033[0m        |
+        newstock = {}
+        for code, details in sandwichswraps.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m SW1 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['SW1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SW1']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW2 \033[0m         \033[1;7;36;96m Seafood \033[0m      \033[1;7;32;92m {convertedcurrency['SW2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SW2 \033[0m         \033[1;7;36;96m Seafood \033[0m      \033[1;7;32;92m {convertedcurrency['SW2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SW2']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW3 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['SW3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m SW3 \033[0m         \033[1;7;36;96m Beef \033[0m         \033[1;7;32;92m {convertedcurrency['SW3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SW3']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW4 \033[0m         \033[1;7;36;96m Cheese \033[0m       \033[1;7;32;92m {convertedcurrency['SW4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m SW4 \033[0m         \033[1;7;36;96m Cheese \033[0m       \033[1;7;32;92m {convertedcurrency['SW4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['SW4']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
-                        |     \033[1;7;31;91m SW5 \033[0m         \033[1;7;36;96m Salmon \033[0m       \033[1;7;32;92m {convertedcurrency['SW5']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m SW5 \033[0m         \033[1;7;36;96m Salmon \033[0m       \033[1;7;32;92m {convertedcurrency['SW5']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['SW5']} \033[0m        |
                         |                   \033[1;7;36;96m Sandwich \033[0m                                  |  
                         |                                                               |
                         |                   Select a \033[1;34;31mtype\033[0m of \033[4;34;92mWrap\033[0m:                      |
                         |                                                               |
                         |     \033[1;34;97mCode:          Name:          Price:          Stock:\033[0m      |
                         |                                                               |
-                        |     \033[1;7;31;91m WP1 \033[0m         \033[1;7;36;96m Grilled \033[0m      \033[1;7;32;92m {convertedcurrency['WP1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m WP1 \033[0m         \033[1;7;36;96m Grilled \033[0m      \033[1;7;32;92m {convertedcurrency['WP1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['WP1']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m WP2 \033[0m         \033[1;7;36;96m Tuna \033[0m         \033[1;7;32;92m {convertedcurrency['WP2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 8 \033[0m        |
+                        |     \033[1;7;31;91m WP2 \033[0m         \033[1;7;36;96m Tuna \033[0m         \033[1;7;32;92m {convertedcurrency['WP2']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['WP2']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |  
                         |                                                               |
-                        |     \033[1;7;31;91m WP3 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['WP3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 3 \033[0m        |
+                        |     \033[1;7;31;91m WP3 \033[0m         \033[1;7;36;96m Chicken \033[0m      \033[1;7;32;92m {convertedcurrency['WP3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['WP3']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |                                                               
                         |                                                               |
-                        |     \033[1;7;31;91m WP4 \033[0m         \033[1;7;36;96m Spud \033[0m         \033[1;7;32;92m {convertedcurrency['WP4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m WP4 \033[0m         \033[1;7;36;96m Spud \033[0m         \033[1;7;32;92m {convertedcurrency['WP4']:.2f}{symbols['AED']} \033[0m         \033[1;7;31;91m {newstock['WP4']} \033[0m        |
                         |                   \033[1;7;36;96m Wrap \033[0m                                      |                                                               
                         |                                                               |
                         §===============================================================§
@@ -3853,22 +3641,25 @@ def fruitCups_spec_4USD():
         convertedcurrency = {}
         for code, details in fruitcups.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m FC1 \033[0m         \033[1;7;36;96m Watermelon \033[0m     \033[1;7;32;92m {convertedcurrency['FC1']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 3 \033[0m        |
+        newstock = {}
+        for code, details in fruitcups.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m FC1 \033[0m         \033[1;7;36;96m Watermelon \033[0m     \033[1;7;32;92m {convertedcurrency['FC1']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['FC1']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC2 \033[0m         \033[1;7;36;96m Pineapple \033[0m      \033[1;7;32;92m {convertedcurrency['FC2']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m FC2 \033[0m         \033[1;7;36;96m Pineapple \033[0m      \033[1;7;32;92m {convertedcurrency['FC2']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['FC2']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC3 \033[0m         \033[1;7;36;96m Orange \033[0m         \033[1;7;32;92m {convertedcurrency['FC3']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 8 \033[0m        |
+                        |     \033[1;7;31;91m FC3 \033[0m         \033[1;7;36;96m Orange \033[0m         \033[1;7;32;92m {convertedcurrency['FC3']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['FC3']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC4 \033[0m         \033[1;7;36;96m Kiwi \033[0m           \033[1;7;32;92m {convertedcurrency['FC4']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m FC4 \033[0m         \033[1;7;36;96m Kiwi \033[0m           \033[1;7;32;92m {convertedcurrency['FC4']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['FC4']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC5 \033[0m         \033[1;7;36;96m Mango \033[0m          \033[1;7;32;92m {convertedcurrency['FC5']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m FC5 \033[0m         \033[1;7;36;96m Mango \033[0m          \033[1;7;32;92m {convertedcurrency['FC5']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['FC5']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC6 \033[0m         \033[1;7;36;96m Pomogranate \033[0m    \033[1;7;32;92m {convertedcurrency['FC6']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m FC6 \033[0m         \033[1;7;36;96m Pomogranate \033[0m    \033[1;7;32;92m {convertedcurrency['FC6']:.2f}{symbols['USD']} \033[0m         \033[1;7;31;91m {newstock['FC6']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       | 
                         |                                                               |                                
                         §===============================================================§
@@ -3902,22 +3693,25 @@ def fruitCups_spec_4GBP():
         convertedcurrency = {}
         for code, details in fruitcups.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m FC1 \033[0m         \033[1;7;36;96m Watermelon \033[0m     \033[1;7;32;92m {convertedcurrency['FC1']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m 3 \033[0m        |
+        newstock = {}
+        for code, details in fruitcups.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m FC1 \033[0m         \033[1;7;36;96m Watermelon \033[0m     \033[1;7;32;92m {convertedcurrency['FC1']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m {newstock['FC1']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC2 \033[0m         \033[1;7;36;96m Pineapple \033[0m      \033[1;7;32;92m {convertedcurrency['FC2']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m FC2 \033[0m         \033[1;7;36;96m Pineapple \033[0m      \033[1;7;32;92m {convertedcurrency['FC2']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m {newstock['FC2']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC3 \033[0m         \033[1;7;36;96m Orange \033[0m         \033[1;7;32;92m {convertedcurrency['FC3']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m 8 \033[0m        |
+                        |     \033[1;7;31;91m FC3 \033[0m         \033[1;7;36;96m Orange \033[0m         \033[1;7;32;92m {convertedcurrency['FC3']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m {newstock['FC3']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC4 \033[0m         \033[1;7;36;96m Kiwi \033[0m           \033[1;7;32;92m {convertedcurrency['FC4']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m FC4 \033[0m         \033[1;7;36;96m Kiwi \033[0m           \033[1;7;32;92m {convertedcurrency['FC4']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m {newstock['FC4']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC5 \033[0m         \033[1;7;36;96m Mango \033[0m          \033[1;7;32;92m {convertedcurrency['FC5']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m FC5 \033[0m         \033[1;7;36;96m Mango \033[0m          \033[1;7;32;92m {convertedcurrency['FC5']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m {newstock['FC5']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC6 \033[0m         \033[1;7;36;96m Pomogranate \033[0m    \033[1;7;32;92m {convertedcurrency['FC6']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m FC6 \033[0m         \033[1;7;36;96m Pomogranate \033[0m    \033[1;7;32;92m {convertedcurrency['FC6']:.2f}{symbols['GBP']} \033[0m         \033[1;7;31;91m {newstock['FC6']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       | 
                         |                                                               |                                
                         §===============================================================§
@@ -3951,22 +3745,25 @@ def fruitCups_spec_4AED():
         convertedcurrency = {}
         for code, details in fruitcups.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m FC1 \033[0m         \033[1;7;36;96m Watermelon \033[0m     \033[1;7;32;92m {convertedcurrency['FC1']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m 3 \033[0m        |
+        newstock = {}
+        for code, details in fruitcups.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m FC1 \033[0m         \033[1;7;36;96m Watermelon \033[0m     \033[1;7;32;92m {convertedcurrency['FC1']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m {newstock['FC1']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC2 \033[0m         \033[1;7;36;96m Pineapple \033[0m      \033[1;7;32;92m {convertedcurrency['FC2']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m FC2 \033[0m         \033[1;7;36;96m Pineapple \033[0m      \033[1;7;32;92m {convertedcurrency['FC2']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m {newstock['FC2']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC3 \033[0m         \033[1;7;36;96m Orange \033[0m         \033[1;7;32;92m {convertedcurrency['FC3']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m 8 \033[0m        |
+                        |     \033[1;7;31;91m FC3 \033[0m         \033[1;7;36;96m Orange \033[0m         \033[1;7;32;92m {convertedcurrency['FC3']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m {newstock['FC3']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC4 \033[0m         \033[1;7;36;96m Kiwi \033[0m           \033[1;7;32;92m {convertedcurrency['FC4']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m FC4 \033[0m         \033[1;7;36;96m Kiwi \033[0m           \033[1;7;32;92m {convertedcurrency['FC4']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m {newstock['FC4']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC5 \033[0m         \033[1;7;36;96m Mango \033[0m          \033[1;7;32;92m {convertedcurrency['FC5']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m 4 \033[0m        |
+                        |     \033[1;7;31;91m FC5 \033[0m         \033[1;7;36;96m Mango \033[0m          \033[1;7;32;92m {convertedcurrency['FC5']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m {newstock['FC5']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       |  
                         |                                                               |
-                        |     \033[1;7;31;91m FC6 \033[0m         \033[1;7;36;96m Pomogranate \033[0m    \033[1;7;32;92m {convertedcurrency['FC6']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m FC6 \033[0m         \033[1;7;36;96m Pomogranate \033[0m    \033[1;7;32;92m {convertedcurrency['FC6']:.2f}{symbols['AED']} \033[0m      \033[1;7;31;91m {newstock['FC6']} \033[0m        |
                         |                   \033[1;7;36;96m Cup \033[0m                                       | 
                         |                                                               |                                
                         §===============================================================§
@@ -4072,23 +3869,26 @@ def driedFruitPackets_spec_5USD():
         convertedcurrency = {}
         for code, details in driedfruitpackets.items():
                         convertedcurrency[code] = round(details["price"] * rates["USD"], 2)
-        print(f"""                        |     \033[1;7;31;91m DF1 \033[0m         \033[1;7;36;96m Walnut \033[0m       \033[1;7;32;92m {convertedcurrency['DF1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in driedfruitpackets.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m DF1 \033[0m         \033[1;7;36;96m Walnut \033[0m       \033[1;7;32;92m {convertedcurrency['DF1']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['DF1']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF2 \033[0m         \033[1;7;36;96m Pistachios \033[0m   \033[1;7;32;92m {convertedcurrency['DF2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m DF2 \033[0m         \033[1;7;36;96m Pistachios \033[0m   \033[1;7;32;92m {convertedcurrency['DF2']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['DF2']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF3 \033[0m         \033[1;7;36;96m Almond \033[0m       \033[1;7;32;92m {convertedcurrency['DF3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m DF3 \033[0m         \033[1;7;36;96m Almond \033[0m       \033[1;7;32;92m {convertedcurrency['DF3']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['DF3']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF4 \033[0m         \033[1;7;36;96m Cashews \033[0m      \033[1;7;32;92m {convertedcurrency['DF4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m DF4 \033[0m         \033[1;7;36;96m Cashews \033[0m      \033[1;7;32;92m {convertedcurrency['DF4']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['DF4']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF5 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m DF5 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF5']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['DF5']} \033[0m        |
                         |                   \033[1;7;36;96m Apricots \033[0m                                  |  
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF6 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m 9 \033[0m        |
+                        |     \033[1;7;31;91m DF6 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF6']:.2f}{symbols['USD']} \033[0m           \033[1;7;31;91m {newstock['DF6']} \033[0m        |
                         |                   \033[1;7;36;96m Figs \033[0m                                      |  
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |                                
@@ -4123,23 +3923,26 @@ def driedFruitPackets_spec_5GBP():
         convertedcurrency = {}
         for code, details in driedfruitpackets.items():
                         convertedcurrency[code] = round(details["price"] * rates["GBP"], 2)
-        print(f"""                        |     \033[1;7;31;91m DF1 \033[0m         \033[1;7;36;96m Walnut \033[0m       \033[1;7;32;92m {convertedcurrency['DF1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in driedfruitpackets.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m DF1 \033[0m         \033[1;7;36;96m Walnut \033[0m       \033[1;7;32;92m {convertedcurrency['DF1']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['DF1']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF2 \033[0m         \033[1;7;36;96m Pistachios \033[0m   \033[1;7;32;92m {convertedcurrency['DF2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m DF2 \033[0m         \033[1;7;36;96m Pistachios \033[0m   \033[1;7;32;92m {convertedcurrency['DF2']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['DF2']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF3 \033[0m         \033[1;7;36;96m Almond \033[0m       \033[1;7;32;92m {convertedcurrency['DF3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m DF3 \033[0m         \033[1;7;36;96m Almond \033[0m       \033[1;7;32;92m {convertedcurrency['DF3']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['DF3']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF4 \033[0m         \033[1;7;36;96m Cashews \033[0m      \033[1;7;32;92m {convertedcurrency['DF4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m DF4 \033[0m         \033[1;7;36;96m Cashews \033[0m      \033[1;7;32;92m {convertedcurrency['DF4']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['DF4']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF5 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m DF5 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF5']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['DF5']} \033[0m        |
                         |                   \033[1;7;36;96m Apricots \033[0m                                  |  
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF6 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m 9 \033[0m        |
+                        |     \033[1;7;31;91m DF6 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF6']:.2f}{symbols['GBP']} \033[0m           \033[1;7;31;91m {newstock['DF6']} \033[0m        |
                         |                   \033[1;7;36;96m Figs \033[0m                                      |  
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |                                
@@ -4174,23 +3977,26 @@ def driedFruitPackets_spec_5AED():
         convertedcurrency = {}
         for code, details in driedfruitpackets.items():
                         convertedcurrency[code] = round(details["price"] * rates["AED"], 2)
-        print(f"""                        |     \033[1;7;31;91m DF1 \033[0m         \033[1;7;36;96m Walnut \033[0m       \033[1;7;32;92m {convertedcurrency['DF1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 5 \033[0m        |
+        newstock = {}
+        for code, details in driedfruitpackets.items():
+                newstock[code] = (details["stock"])
+        print(f"""                        |     \033[1;7;31;91m DF1 \033[0m         \033[1;7;36;96m Walnut \033[0m       \033[1;7;32;92m {convertedcurrency['DF1']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['DF1']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF2 \033[0m         \033[1;7;36;96m Pistachios \033[0m   \033[1;7;32;92m {convertedcurrency['DF2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 2 \033[0m        |
+                        |     \033[1;7;31;91m DF2 \033[0m         \033[1;7;36;96m Pistachios \033[0m   \033[1;7;32;92m {convertedcurrency['DF2']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['DF2']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF3 \033[0m         \033[1;7;36;96m Almond \033[0m       \033[1;7;32;92m {convertedcurrency['DF3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 0 \033[0m        |
+                        |     \033[1;7;31;91m DF3 \033[0m         \033[1;7;36;96m Almond \033[0m       \033[1;7;32;92m {convertedcurrency['DF3']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['DF3']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF4 \033[0m         \033[1;7;36;96m Cashews \033[0m      \033[1;7;32;92m {convertedcurrency['DF4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 1 \033[0m        |
+                        |     \033[1;7;31;91m DF4 \033[0m         \033[1;7;36;96m Cashews \033[0m      \033[1;7;32;92m {convertedcurrency['DF4']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['DF4']} \033[0m        |
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF5 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF5']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 5 \033[0m        |
+                        |     \033[1;7;31;91m DF5 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF5']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['DF5']} \033[0m        |
                         |                   \033[1;7;36;96m Apricots \033[0m                                  |  
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |
-                        |     \033[1;7;31;91m DF6 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF6']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m 9 \033[0m        |
+                        |     \033[1;7;31;91m DF6 \033[0m         \033[1;7;36;96m Dried \033[0m        \033[1;7;32;92m {convertedcurrency['DF6']:.2f}{symbols['AED']} \033[0m        \033[1;7;31;91m {newstock['DF6']} \033[0m        |
                         |                   \033[1;7;36;96m Figs \033[0m                                      |  
                         |                   \033[1;7;36;96m Packet \033[0m                                    |  
                         |                                                               |                                
@@ -4251,7 +4057,6 @@ def display():
 
 
 
-
 def MainCurrencyDisplay():
         
         print (("""\033[1;34;30m
@@ -4294,7 +4099,6 @@ def MainCurrencyDisplay():
         else: 
                 print ("Please ensure to select an option to continue")
                 MainCurrencyDisplay()
-
 
 
 
@@ -4429,7 +4233,6 @@ def displayAED():
         else: 
                 print ("Please ensure to select an option to continue")
                 displayAED()
-
 
 
 
@@ -4591,11 +4394,6 @@ def snacks_displayAED():
         else: 
                 print ("Please ensure to select an option to continue")
                 snacks_displayAED()
-
-
-
-
-
 
 
 
@@ -4965,7 +4763,21 @@ def spec_displayAED():
                 spec_displayAED()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 MainCurrencyDisplay()
+
 
 
 
