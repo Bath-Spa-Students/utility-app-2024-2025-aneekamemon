@@ -1,7 +1,6 @@
 
 # Vending Machine - Aneeka Memon
 
-
 # The title for the vending machine 
 
 # This design has been taken from the ASCII art webpage
@@ -33,24 +32,20 @@ print ("\n\n")
 
 
 
+
+
+
+# The items dictionary:
+
 # Defining a dictionary which contains different items categorised by 1. Snacks, 2. Drinks, 3. Specialties.
 
-# The items dictionary 
-
-# For now the dictionary contains three main categories for the items; the product name, it's price, and the amount of stock that is available. 
-
-# A tag system is also incorporated into the dictionaries, which will later come in handy when a filter is added to allow users to find items quicker.  -->
+# For now the dictionary contains 4 keys for the items; the product name, it's price, and the amount of stock that is available, and nutritional filters. 
 
 # A code system is added to ease the action of selecting items in the inventory. 
 
+# The dollar is the standard unit to the exchange currency.
 
-# For every one currency unit to the exchange currency unit. with the dollar being the standard
-
-
-
-
-
-#   The main tags allocated to the items are: Gluten Free, Sugar Free, Diabetes Friendly, and Vegan.       <--
+#   The main tags allocated to the items are: Gluten Free, Sugar Free, and Vegan.       <--
 
 # To format specific colors onto the terminal texts, the usage of ANSI escape codes is implemented.
 
@@ -159,18 +154,7 @@ SodaSoftDrinks = {
 }
 
 
-icetea = {
-        "T1": { "name" : "Gold Peak Tea", "price": 3.45, "stock" : 2, "tags": ["Sugar Free"]  },
-        "T2": { "name" : "Lipton Ice Tea (Peach)", "price": 3.75, "stock" : 5 },
-        "T3": { "name" : "Lipton Ice Tea (Lemon)", "price": 3.75, "stock" : 0 },
-        "T4": { "name" : "Lipton Ice Tea (Strawberry)", "price": 2.75, "stock" : 0 },
-}
 
-        # End of the Drinks category  
-
-
-
-        # Start of the Specialties category
 healthyoptions = {
         "EG1": { "name" : "Clif Bar", "price": 4.00, "stock" : 4 },
         "EG2": { "name" : "Nature Valley", "price": 2.99, "stock" : 2, "tags": ["Vegan"] },
@@ -226,11 +210,6 @@ pricew = 4
 stockw = 3
 borderwidth = 15
 
-
-Selected_Currency_Snacks = None
-
-
-
 import random   # Used to import the random module which will generate randomized related functions. 
 
 def chocolateBar_snacks_1(CurrencyCode, SymbolOfCurrency, ConRate):     # Define Function for -> Chocolate Bars that contains arguments, parameters, or input variables.
@@ -255,7 +234,7 @@ def chocolateBar_snacks_1(CurrencyCode, SymbolOfCurrency, ConRate):     # Define
         DesignBOTTOM()
                 # This is the user input where the user is asked to enter the code of the product they're picking.
         userchoice = input(                     "\n\n\033[1;7;31;91mEnter the code of your choice:\033[0m \n\n").upper()
-        if userchoice == "EXIT":        # If they pick exit they before selecting any items they're brought to the maincurrencypage.
+        if userchoice == "EXIT":        # If they pick exit they before selecting any items they're brought to the display in accordance to the currency they selected.
                 if CurrencyCode == "USD":
                         displayUSD(SymbolOfCurrency, ConRate)
                 elif CurrencyCode == "GBP":
@@ -263,60 +242,57 @@ def chocolateBar_snacks_1(CurrencyCode, SymbolOfCurrency, ConRate):     # Define
                 elif CurrencyCode == "AED":
                         displayAED(SymbolOfCurrency, ConRate)
                 
-        elif userchoice == "CART":
+        elif userchoice == "CART":      # If they type cart they're taken to their cart that stores items they selected.
                 viewcart(SymbolOfCurrency, ConRate)
-                break
-        elif userchoice in ChocolateBars:
+                break   # To which the loop breaks
+        elif userchoice in ChocolateBars:       # If the user types in a code from ChocolateBars then they they're asked the number of items they'd like to purchase.
                 item = ChocolateBars[userchoice]
                 amount = int(input(f"\n\n\033[1;7;36;96mHow many {item['name']} would you like to add?\033[0m "))
-                if amount <= item["stock"]:
-                        if userchoice in cart:
-                                cart[userchoice]["amount"] += amount
+                if amount <= item["stock"]:     # If the amount they pick is larger than the amount available in the dictionary, they're told not enough stock is available.
+                        if userchoice in cart:  
+                                cart[userchoice]["amount"] += amount    # If they successfully select an item and a proper amount then it will be added into their cart.
                         else: 
-                                cart[userchoice] = {
+                                cart[userchoice] = {                    # Adds the name, price, and amount of the user selected product into the cart.
                                         "name": item["name"],
                                         "price": item["price"],
                                         "amount": amount,
                                 }
-                        item["stock"] -= amount
-                        print (f"\n\n\033[1;7;32;92m{amount} {item['name']} added to cart.\033[0m")
-                
+                        item["stock"] -= amount         # Once an item is added into the cart, it will decrease in stock.
+                        print (f"\n\n\033[1;7;32;92m{amount} {item['name']} added to cart.\033[0m")     # Lets the user know the item has been added.
+                        # After the user selects an item, they're asked if they'd like an additional item.
                         AdditionalOrder = input("\n\n\033[1;7;36;96mEnergy Drinks are popular add-ons with Chocolate Bars! Would you like to add a random Energy Drink?: \033[0m").strip().lower()
-                        if AdditionalOrder == "yes":
+                        if AdditionalOrder == "yes":    # If they answer yes, a random energy drink is selected from EnergyDrinks.items() only if the stock is more than 0.
                                 DrinksAvailable = [code for code, details in EnergyDrinks.items() if details["stock"] > 0]
                                 if DrinksAvailable:
-                                        AdditionalOrderCODE = random.choice(DrinksAvailable)
-                                        SelectedDrinkCB = EnergyDrinks[AdditionalOrderCODE]
-                                        ConvertedAddItem = round(SelectedDrinkCB["price"] * ConRate, 2)
-                                        print(f"\n\n\033[1;7;34;94mYour Drink is: {SelectedDrinkCB['name']} which costs {ConvertedAddItem:.2f} {SymbolOfCurrency} \033[0m")
-                                        DrinkAMOUNT = int(input(f"\n\n\033[1;7;34;94m Keeping in mind that the available stock is {SelectedDrinkCB['stock']}. Please enter the amount of {SelectedDrinkCB['name']} you would like to purchase: \033[0m"))
+                                        AdditionalOrderCODE = random.choice(DrinksAvailable)    # random. is what selects a random drink from DrinksAvailable.
+                                        SelectedDrinkCB = EnergyDrinks[AdditionalOrderCODE]     # The selected drink is then named as SelectedDrinkCB
+                                        ConvertedAddItem = round(SelectedDrinkCB["price"] * ConRate, 2) # Its price is converted to the conversion rate the user has selected.
+                                        print(f"\n\n\033[1;7;34;94mYour Drink is: {SelectedDrinkCB['name']} which costs {ConvertedAddItem:.2f} {SymbolOfCurrency} \033[0m")     # This lets the user know which drink has been selected.
+                                        DrinkAMOUNT = int(input(f"\n\n\033[1;7;34;94m Keeping in mind that the available stock is {SelectedDrinkCB['stock']}. Please enter the amount of {SelectedDrinkCB['name']} you would like to purchase: \033[0m"))       # The user is then asked how many of the selected drinks they'd like.
                                         print(f"\n\n\033[1;7;34;94mYour Drink is: {SelectedDrinkCB['name']} which costs {ConvertedAddItem:.2f} {SymbolOfCurrency} \n\n\033[0m")
-                                        if DrinkAMOUNT <= SelectedDrinkCB["stock"]:
+                                        if DrinkAMOUNT <= SelectedDrinkCB["stock"]:     # If the user enters more than of what is available stock wise then they're told not enough stock is available. 
                                                 if AdditionalOrderCODE in cart:
-                                                        cart[AdditionalOrderCODE]["amount"]     += DrinkAMOUNT
+                                                        cart[AdditionalOrderCODE]["amount"]     += DrinkAMOUNT  # If the user selects the right amount of stock then the drink is added into the cart.
                                                 else:
-                                                        cart[AdditionalOrderCODE] = {
+                                                        cart[AdditionalOrderCODE] = {           # Alongside the name, price, and amount of drinks.
                                                         "name": SelectedDrinkCB["name"],
                                                         "price": SelectedDrinkCB["price"],
                                                         "amount": DrinkAMOUNT,
                                                         }
-                                                SelectedDrinkCB["stock"] -= DrinkAMOUNT
-                                                print(f"\033[1;7;36;96m Your Selection of {DrinkAMOUNT} {SelectedDrinkCB['name']} has been added to your cart!\033[0m ")               
+                                                SelectedDrinkCB["stock"] -= DrinkAMOUNT         # The amount of additional items selected will decrease in stock, in their respective dictionaries.
+                                                print(f"\033[1;7;36;96m Your Selection of {DrinkAMOUNT} {SelectedDrinkCB['name']} has been added to your cart!\033[0m ")  # This will let the user know the additional item(s) has been added into the cart.             
                                         else:
                                                 print(f"\n\n\033[1;7;31;91mThere isn't enough stock available for {SelectedDrinkCB['name']}! Only {SelectedDrinkCB['stock']} is available.\033[0m")
                                 else:
                                         print(f"\n\n\033[1;7;31;91m Energy Drinks are currently out of stock...\033[0m")
                         else:
-                                print(f"\n\n\033[1;7;31;91m No add-ons selected. \033[0m")
-                        continue
+                                print(f"\n\n\033[1;7;31;91m No add-ons selected. \033[0m")      
+                        continue        # If no add-ons are selected then code runs as usual, to allow the user to purchase more items if they like.
                 else:
                         print(f"\n\n\033[1;7;31;91mThere isn't enough stock available for {item['name']}! Only {item['stock']} is available.\033[0m")
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")                
                 
-                
-                
-
 def chips_snacks_2(CurrencyCode, SymbolOfCurrency, ConRate):    # Define Function for -> Chips that contains arguments, parameters, or input variables.
  while True:
         TheCornerLogoRed()
@@ -365,10 +341,6 @@ def chips_snacks_2(CurrencyCode, SymbolOfCurrency, ConRate):    # Define Functio
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
 
-import random
-
-
-
 def candy_snacks_4(CurrencyCode, SymbolOfCurrency, ConRate):    # Define Function for -> candy that contains arguments, parameters, or input variables.
  while True:
         TheCornerLogoRed()
@@ -416,7 +388,6 @@ def candy_snacks_4(CurrencyCode, SymbolOfCurrency, ConRate):    # Define Functio
                         print(f"\n\n\033[1;7;31;91mThere isn't enough stock available for {item['name']}! Only {item['stock']} is available.\033[0m")
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
- 
 
 def water_drinks_1(CurrencyCode, SymbolOfCurrency, ConRate):    # Define Function for -> water that contains arguments, parameters, or input variables.
  while True:
@@ -465,7 +436,6 @@ def water_drinks_1(CurrencyCode, SymbolOfCurrency, ConRate):    # Define Functio
                         print(f"\n\n\033[1;7;31;91mThere isn't enough stock available for {item['name']}! Only {item['stock']} is available.\033[0m")
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
-
 
 def EnergyDrink_drinks_2(CurrencyCode, SymbolOfCurrency, ConRate):      # Define Function for -> energy drinks that contains arguments, parameters, or input variables.
  while True:
@@ -542,7 +512,6 @@ def EnergyDrink_drinks_2(CurrencyCode, SymbolOfCurrency, ConRate):      # Define
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
 
-
 def SodaSoftDrinks_drinks_3(CurrencyCode, SymbolOfCurrency, ConRate):   # Define Function for -> Soda & Soft Drinks that contains arguments, parameters, or input variables.
  while True:
         TheCornerLogoBlue()
@@ -590,62 +559,6 @@ def SodaSoftDrinks_drinks_3(CurrencyCode, SymbolOfCurrency, ConRate):   # Define
                         print(f"\n\n\033[1;7;31;91mThere isn't enough stock available for {item['name']}! Only {item['stock']} is available.\033[0m")
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
-
-
-
-
-def IceTea_drinks_5(CurrencyCode, SymbolOfCurrency, ConRate):   # Define Function for -> ice tea drinks that contains arguments, parameters, or input variables.
- while True:
-        TheCornerLogoBlue()
-        DesignTOP()                
-        print("""                                            Select a \033[1;34;31mtype\033[0m of \033[4;34;92mIce Tea\033[0m:
-                                
-                        \033[1;34;97mCode:                      Name:              Price:               Stock:\033[0m                 
-                                                                                                        """)
-        Concurrency = {code: round(details["price"] * ConRate, 2) for code, details in icetea.items()}
-        Nstock = {code: details["stock"] for code, details in icetea.items()}
-
-        for code in icetea.keys():
-             print (f"""                        \033[1;7;31;91m {code:<{codewidth}} \033[0m        \033[1;7;36;96m {icetea[code]['name']:<{namewidth}} \033[0m    \033[1;7;32;92m {Concurrency[code]:.2f}{SymbolOfCurrency:>{pricew}} \033[0m          \033[1;7;31;91m {Nstock [code]:<{stockw}}  \033[0m
-                                                                                                    """)    
-        DesignBOTTOM()
-
-        userchoice = input(                     "\n\n\033[1;7;31;91mEnter the code of your choice:\033[0m \n\n").upper()
-        if userchoice == "EXIT":
-                if CurrencyCode == "USD":
-                        displayUSD(SymbolOfCurrency, ConRate)
-                elif CurrencyCode == "GBP":
-                        displayGBP(SymbolOfCurrency, ConRate)
-                elif CurrencyCode == "AED":
-                        displayAED(SymbolOfCurrency, ConRate)
-
-        elif userchoice == "CART":
-                viewcart(SymbolOfCurrency, ConRate)
-                break
-        elif userchoice in icetea:
-                item = icetea[userchoice]
-                amount = int(input(f"\n\n\033[1;7;36;96mHow many {item['name']} would you like to add?\033[0m "))
-                if amount <= item["stock"]:
-                        if userchoice in cart:
-                                cart[userchoice]["amount"] += amount
-                        else: 
-                                cart[userchoice] = {
-                                        "name": item["name"],
-                                        "price": item["price"],
-                                        "amount": amount,
-                                }
-                        item["stock"] -= amount
-                        print (f"\n\n\033[1;7;32;92m{amount} {item['name']} added to cart.\033[0m")
-                        
-                else:
-                        print(f"\n\n\033[1;7;31;91mThere isn't enough stock available for {item['name']}! Only {item['stock']} is available.\033[0m")
-        else: 
-                print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
-
-
-
-
-
 
 def HealthyOptions_spec_1(CurrencyCode, SymbolOfCurrency, ConRate):     # Define Function for -> healthy options that contains arguments, parameters, or input variables.
  while True:
@@ -722,10 +635,7 @@ def HealthyOptions_spec_1(CurrencyCode, SymbolOfCurrency, ConRate):     # Define
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
 
-
-
-
-def SandWraps_spec_3(CurrencyCode, SymbolOfCurrency, ConRate):
+def SandWraps_spec_3(CurrencyCode, SymbolOfCurrency, ConRate):  # Define Function for -> Sandwiches and Wraps that contains arguments, parameters, or input variables.
  while True:
         TheCornerLogoGreen()
         DesignTOP()
@@ -773,8 +683,7 @@ def SandWraps_spec_3(CurrencyCode, SymbolOfCurrency, ConRate):
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
 
-
-def FruitCups_spec_4(CurrencyCode, SymbolOfCurrency, ConRate):
+def FruitCups_spec_4(CurrencyCode, SymbolOfCurrency, ConRate):  # Define Function for -> Fruit Cups that contains arguments, parameters, or input variables.
  while True:
         TheCornerLogoGreen()
         DesignTOP()
@@ -818,10 +727,10 @@ def FruitCups_spec_4(CurrencyCode, SymbolOfCurrency, ConRate):
                         print (f"\n\n\033[1;7;32;92m{amount} {item['name']} added to cart.\033[0m")
                         AdditionalOrder = input("\n\n\033[1;7;36;96mIce Tea is a popular add-on with Fruit Cups! Would you like to add a random Ice Tea Drink?: \033[0m").strip().lower()
                         if AdditionalOrder == "yes":
-                                DrinksAvailable = [code for code, details in icetea.items() if details["stock"] > 0]
+                                DrinksAvailable = [code for code, details in SodaSoftDrinks.items() if details["stock"] > 0]
                                 if DrinksAvailable:
                                         AdditionalOrderCODE = random.choice(DrinksAvailable)
-                                        SelectedDrinkCB = icetea[AdditionalOrderCODE]
+                                        SelectedDrinkCB = SodaSoftDrinks[AdditionalOrderCODE]
                                         ConvertedAddItem = round(SelectedDrinkCB["price"] * ConRate, 2)
                                         print(f"\n\n\033[1;7;34;94mYour Drink is: {SelectedDrinkCB['name']} which costs {ConvertedAddItem:.2f} {SymbolOfCurrency} \033[0m")
                                         DrinkAMOUNT = int(input(f"\n\n\033[1;7;34;94m Keeping in mind that the available stock is {SelectedDrinkCB['stock']}. Please enter the amount of {SelectedDrinkCB['name']} you would like to purchase: \033[0m"))
@@ -849,8 +758,7 @@ def FruitCups_spec_4(CurrencyCode, SymbolOfCurrency, ConRate):
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
 
-
-def DriedFruitPackets_spec_5(CurrencyCode, SymbolOfCurrency, ConRate):
+def DriedFruitPackets_spec_5(CurrencyCode, SymbolOfCurrency, ConRate):  # Define Function for -> Dried Fruit Packets that contains arguments, parameters, or input variables.
  while True:
         TheCornerLogoGreen()
         DesignTOP()
@@ -898,14 +806,9 @@ def DriedFruitPackets_spec_5(CurrencyCode, SymbolOfCurrency, ConRate):
         else: 
                 print("\n\n\033[1;7;31;91mPlease enter a valid input!\033[0m")
 
-
-
-
-
-
 # The logo design in different colors for different front variations
 
-def TheCornerLogoGreen():
+def TheCornerLogoGreen():       # The green variation used for specialties
                print (("""\033[1;32;32m
              _____                                                                                     _____
             ( ___ )-----------------------------------------------------------------------------------( ___ )
@@ -922,7 +825,8 @@ def TheCornerLogoGreen():
             (_____)-----------------------------------------------------------------------------------(_____)
                                                                                                                 \033[0m"""))
 
-def TheCornerLogoRed():
+def TheCornerLogoRed():         # The green variation used for snacks 
+
         print (("""\033[1;34;31m
              _____                                                                                     _____
             ( ___ )-----------------------------------------------------------------------------------( ___ )
@@ -939,7 +843,7 @@ def TheCornerLogoRed():
             (_____)-----------------------------------------------------------------------------------(_____)
                                                                                                                 \033[0m"""))
 
-def TheCornerLogoBlue():
+def TheCornerLogoBlue():        # The blue variation used for drinks
         print (("""\033[1;34;34m
              _____                                                                                     _____
             ( ___ )-----------------------------------------------------------------------------------( ___ )
@@ -956,7 +860,7 @@ def TheCornerLogoBlue():
             (_____)-----------------------------------------------------------------------------------(_____)
                                                                                                                 \033[0m"""))
 
-def TheCornerLogoGrey():
+def TheCornerLogoGrey():        # The blue variation used for the rest of the functions.
                print (("""\033[1;34;30m
          _____                                                                                     _____
         ( ___ )-----------------------------------------------------------------------------------( ___ )
@@ -972,7 +876,6 @@ def TheCornerLogoGrey():
          |___|                                                                                     |___|
         (_____)-----------------------------------------------------------------------------------(_____)
 \033[0m"""))
-
 
 # The front page design for the Subcategories (Snacks, Drinks, and Specialities)
 
@@ -1010,8 +913,6 @@ def Subcategory_Drinks():
                             |                                                       |
                             |                \033[1;34;92m3.\033[0m \033[7;34;33mSoda & Soft Drinks\033[0m                  |
                             |                                                       |
-                            |                \033[1;34;92m4.\033[0m \033[7;34;33mIce Tea\033[0m                             |
-                            |                                                       |
                             |                \033[1;34;92m0.\033[0m \033[7;34;33mExit\033[0m                                |
                             |                                                       |
                             §=======================================================§
@@ -1040,7 +941,6 @@ def Subcategory_Spec():
 """)
         print ("\n" * 4)
        
-
 # The front page for the 3 different categories
 
 def CategorySelection():
@@ -1068,7 +968,6 @@ def CategorySelection():
                             §=======================================================§
 """)
        
-
 # Design partition TOP
 
 def DesignTOP():
@@ -1088,104 +987,96 @@ def DesignBOTTOM():
                 |+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+|
                 §=====================================================================================§""")
 
-
+# Different border measurements
 cartwidth = 25
 pricewidth = 10
 amountwdith = 6
 totalwidth = 3
 
-
-
-
-def viewcart(SymbolOfCurrency, ConRate):
-        if not cart:
-                print("\n\n\033[1;7;31;91mYour cart is empty.\033[0m\n\n")
-                return
+def viewcart(SymbolOfCurrency, ConRate):        # The cart function in-which items selected are stored and are passed onto the checkout function.
+        if not cart:    # If the cart is empty then the user returns to function that was running previously. 
+                print("\n\n\033[1;7;31;91mYour cart is empty.\033[0m\n\n")      # Lets the user know their cart is empty 
+                return  # Loop ends here.
         
-        TheCornerLogoGrey()
-        DesignTOP()
+        TheCornerLogoGrey()     # Logo design in grey
+        DesignTOP()     # Design function (top)
         print("""                                                    \033[1;7;34;90m Your cart: \033[0m""")
         print("\n")
         print("""                    \033[1;7;37;97m NAME: \033[0m                \033[1;7;32;92m PRICE: \033[0m               \033[1;7;34;94m AMOUNT: \033[0m              \033[1;7;33;93m TOTAL: \033[0m""")
         print("\n")
-        totalprice = 0
+        totalprice = 0  #       Price is set to zero.
         for item in cart.values():
-                Converted_Price = round(item["price"] * ConRate, 2)
-                total = round(Converted_Price * item["amount"], 2)
+                Converted_Price = round(item["price"] * ConRate, 2)     # All prices of the items the user has selected are converted to the rate selected initially by the user.
+                total = round(Converted_Price * item["amount"], 2)      # The total price amount of all products are also converted in a similar fashion. 
                 print(f"""                    \033[1;7;37;97m {item['name']:<{cartwidth}}\033[0m        \033[1;7;32;92m{Converted_Price:.2f} {SymbolOfCurrency:>} \033[0m         \033[1;7;34;94m{item['amount']:>{amountwdith}} \033[0m          \033[1;7;33;93m {total} {SymbolOfCurrency} \033[0m""")
-                totalprice += total
-        print(f"""\n                                             \033[1;7;32;92m  Total Price: {totalprice:.2f} {SymbolOfCurrency}  \033[0m\n\n""")
-        DesignBOTTOM()
+                totalprice += total     # The total price point is now added to (totalprice) which was set to zero.
+        print(f"""\n                                             \033[1;7;32;92m  Total Price: {totalprice:.2f} {SymbolOfCurrency}  \033[0m\n\n""")     # Total price of all products added together is shown here, alongside the designated currency symbol.
+        DesignBOTTOM()  # Design function (bottom)
 
 
-        Proceed_To_Checkout = input("                   \n\n\033[1;7;32;92m Do you wish to proceed to checkout?: \033[0m\n\n").strip().lower()
+        Proceed_To_Checkout = input("                   \n\n\033[1;7;32;92m Do you wish to proceed to checkout?: \033[0m\n\n").strip().lower()  # Input asks if the user would like to proceed to the checkout function to confirm purchase.
         
-        if Proceed_To_Checkout == 'yes': 
+        if Proceed_To_Checkout == 'yes':        # If the user answers 'yes', they are taken to the "checkout" function.
                 checkout(SymbolOfCurrency, ConRate)
-        elif Proceed_To_Checkout == 'no':
+        elif Proceed_To_Checkout == 'no':       # If they answer no they return back to the Selection to continue shopping for items.
                 print("\n\n\033[1;7;31;91mYou chose not to checkout...\033[0m")
                 CategorySelection()
         else:
-                print("\n\n\033[1;7;31;91m Please type either 'yes' or 'no'.\033[0m")
+                print("\n\n\033[1;7;31;91m Please type either 'yes' or 'no'.\033[0m")   # Ensures user selects a valid option.
                 viewcart(SymbolOfCurrency, ConRate)
 
 
 
 def checkout(SymbolOfCurrency, ConRate):
-        totalprice = 0
-        for item in cart.values():
-                Converted_Price = round(item["price"] * ConRate, 2)
-                total = round(Converted_Price * item["amount"], 2)
-                totalprice += total 
-
-        TheCornerLogoGrey()
-        DesignTOP()
+        totalprice = 0          # Price is set to zero
+        TheCornerLogoGrey()     # Logo design in grey
+        DesignTOP()     # Design function (top)
         print("""\n                                               \033[1;7;32;92mYour Checkout Summary:\033[0m\n\n""")
-        print("""                    \033[1;7;37;97m NAME: \033[0m                \033[1;7;32;92m PRICE: \033[0m               \033[1;7;34;94m AMOUNT: \033[0m              \033[1;7;33;93m TOTAL: \033[0m\n\n""")
+        print("""                    \033[1;7;37;97m NAME: \033[0m                \033[1;7;32;92m PRICE: \033[0m               \033[1;7;34;94m AMOUNT: \033[0m              \033[1;7;33;93m TOTAL: \033[0m\n\n""")      # The descriptions match the actual products below in color to avoid confusion. 
         for item in cart.values():
-                Converted_Price = round(item["price"] * ConRate, 2)
-                total = round(Converted_Price * item["amount"], 2)
+                Converted_Price = round(item["price"] * ConRate, 2)     # All prices of the items the user has selected are converted to the rate selected initially by the user.
+                total = round(Converted_Price * item["amount"], 2)       # The total price amount of all products are also converted in a similar fashion.
                 print(f"""                    \033[1;7;37;97m {item['name']:<{cartwidth}}\033[0m        \033[1;7;32;92m {Converted_Price:.2f} {SymbolOfCurrency:>} \033[0m         \033[1;7;34;94m{item['amount']:>{amountwdith}} \033[0m          \033[1;7;33;93m{total} {SymbolOfCurrency:>{totalwidth}}\033[0m""")
-                totalprice += total
+                totalprice += total #       Price is set to zero.
         print(f"""\n\n                                               \033[1;7;32;92mTotal Price: {totalprice:.2f} {SymbolOfCurrency} \033[0m\n\n""")
-        DesignBOTTOM()
+        DesignBOTTOM()  # Design function (bottom)
 
 
 
-        DesignTOP
-        print("""\n                                                    1. \033[1;7;32;92m Cash \033[0m""")
-        print("""\n                                                    2. \033[1;7;32;92m Card \033[0m""")
-        Proceed_To_Payment = input("\n\n                                  \033[1;7;32;92mPlease enter your preferred payment option: \033[0m").strip().lower()
-        if Proceed_To_Payment == "1" or Proceed_To_Payment.lower() in "cash":
-          while True:
-                CASH = float(input("\n\n                                      \033[1;7;32;95m Enter the Cash amount: \033[0m"))
-                if CASH < totalprice:
-                        print(f"\n\n           \033[1;7;32;91m You have entered an insufficient amount of cash. To proceed you'll need to enter {totalprice - CASH:.2f} {SymbolOfCurrency} more.\033[0m")
-                        print("""\n                                                  1. \033[1;7;32;92m Retry \033[0m""")
+        DesignTOP       # Design function (top)
+        print("""\n                                                    1. \033[1;7;32;92m Cash \033[0m""")      # Cash option the user gets to select from
+        print("""\n                                                    2. \033[1;7;32;92m Card \033[0m""")      # Card option the user gets to select from
+        Proceed_To_Payment = input("\n\n                                  \033[1;7;32;92mPlease enter your preferred payment option: \033[0m").strip().lower()  # The user is asked to select either cash or card as a form of payment.
+        if Proceed_To_Payment == "1" or Proceed_To_Payment.lower() in "cash":   # Prodecure if they select cash
+          while True:   # While true loop is used to end the purchasing prodecure after a purchase is fulfilled.
+                CASH = float(input("\n\n                                      \033[1;7;32;95m Enter the Cash amount: \033[0m"))         # User is prompted to enter the cash amount.
+                if CASH < totalprice:   # If the cash amount is less than the total price of all products then..
+                        print(f"\n\n           \033[1;7;32;91m You have entered an insufficient amount of cash. To proceed you'll need to enter {totalprice - CASH:.2f} {SymbolOfCurrency} more.\033[0m")       # User is told how much more cash they're required to pay.
+                        print("""\n                                                  1. \033[1;7;32;92m Retry \033[0m""")       # 2 options are provided to the user, to either retry or cancel payment in cash.
                         print("""\n                                                  2. \033[1;7;32;92m Cancel \033[0m""")
                         Try_Again = input("\n          \033[1;7;32;91m Would you like to re-enter a different amount or cancel entirely: \033[0m").strip().lower()
-                        if Try_Again.lower() in "Cancel Payment":
+                        if Try_Again.lower() in "Cancel Payment":       # If payment is canceled then the loop breaks
                                 print("\n\033[1;7;34;47mYour payment has been canceled.\033[0m")
-                                break
+                                break   # Loop ends here.
                 
                 else: 
-                        CHANGE = round(CASH - totalprice, 2)
-                        print(f"\n\n                                     \033[1;7;32;92mPayment completed. Your change is {CHANGE:.2f} {SymbolOfCurrency} \033[0m")
-                        print("\n\n                                         \033[1;7;37;97mThank you for vending at The Corner.\n\n\033[0m")
+                        CHANGE = round(CASH - totalprice, 2)    # Change is calculated through the subtraction of cash provided by user and total price of all products selected.
+                        print(f"\n\n                                     \033[1;7;32;92mPayment completed. Your change is {CHANGE:.2f} {SymbolOfCurrency} \033[0m")     # Change is issued here
+                        print("\n\n                                         \033[1;7;37;97mThank you for vending at The Corner.\n\n\033[0m")    # User is thanked for using the vending machine and then is returned to the Main page.
                         MainCurrencyDisplay(SymbolOfCurrency, ConRate)
-                        cart.clear()
-        elif Proceed_To_Payment == "2" or Proceed_To_Payment.lower() in "card":
-          while True:
-                  CARD_Num = input("\n\n                                             \033[1;7;32;95mEnter your 4 digit PIN code:\033[0m")
+                        cart.clear()     #The cart clears and totalprice is set to zero.
+        elif Proceed_To_Payment == "2" or Proceed_To_Payment.lower() in "card":         # If the user selected card they're asked to input their 4 digit pin commonly required in wired transactions.
+          while True:   
+                  CARD_Num = input("\n\n                                             \033[1;7;32;95mEnter your 4 digit PIN code:\033[0m")       # User inputs pin here.
 
-                  if len(CARD_Num) < 4: 
+                  if len(CARD_Num) < 4:         # The length of the card pin must be lower than 5 digits.
                           print ("\n\n                                 \033[1;7;32;95mPlease enter your 4 digit PIN code\033[0m")
                   else: 
-                          print(f"\n\n                      \033[1;7;32;92mPayment completed. The amount: {totalprice:.2f} {SymbolOfCurrency} has been charged onto your card.\033[0m")
+                          print(f"\n\n                      \033[1;7;32;92mPayment completed. The amount: {totalprice:.2f} {SymbolOfCurrency} has been charged onto your card.\033[0m")         # Since its a card transfer, change isn't required. 
                           print("\n\n                                         \033[1;7;37;97mThank you for vending at The Corner.\n\n\033[0m")
                           cart.clear()
-                          break
-        DesignBOTTOM()                        
+                          break         # Loop breaks and user is redirected to the main display.
+        DesignBOTTOM()                  # Design function (bottom)            
         MainCurrencyDisplay(SymbolOfCurrency, ConRate)
 
 
@@ -1210,8 +1101,8 @@ def checkout(SymbolOfCurrency, ConRate):
 
 
 
-def MainCurrencyDisplay(SymbolOfCurrency, ConRate):
-        TheCornerLogoGrey()
+def MainCurrencyDisplay(SymbolOfCurrency, ConRate):     # Main currency display, shown in the very beginning.
+        TheCornerLogoGrey()     # Logo design in grey
         print ("""\
                             §=======================================================§
                             |         \033[1;34;95mWelcome to Vending at 'The Corner'\033[0m            |
@@ -1227,7 +1118,7 @@ def MainCurrencyDisplay(SymbolOfCurrency, ConRate):
                             §=======================================================§
 """)
 
-        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
+        selectcurrency  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()    # User is given the choice to select between 3 currencies. 
         print(f"\n\nUser Selected -> {selectcurrency}")
 
         if selectcurrency == "1" or selectcurrency.lower() in "dollars usd":
@@ -1240,31 +1131,30 @@ def MainCurrencyDisplay(SymbolOfCurrency, ConRate):
         MainCurrencyDisplay(SymbolOfCurrency, ConRate)
 
 
-AllItems = {
+AllItems = {    # All products kept in a dictionary which will be utilised for a filter search system.
         "Chocolate Bars": ChocolateBars,
         "Chips": Chips,
         "Candy": Candy,
         "water": water,
         "EnergyDrinks": EnergyDrinks,
         "SodaSoftDrinks": SodaSoftDrinks,
-        "icetea": icetea,
         "healthyoptions": healthyoptions,
         "sandwichswraps": sandwichswraps,
         "fruitcups": fruitcups,
         "driedfruitpackets": driedfruitpackets,
 }
 
-filterborder = 30
+filterborder = 30       # Border for the items in the filter function.
 
-def FactsFilter(tag):
+def FactsFilter(tag):           # The filter system which showcases the nutritional information of all products.
         Items_found = False
         DesignTOP()
         for category, items in AllItems.items():
                 for code, details in items.items():
-                    if "tags" in details and isinstance(details["tags"], list):    
-                        if tag.lower() in [t.lower() for t in details["tags"]]:
-                                if details["stock"] > 0:
-                                        tags_align = ', '.join(details["tags"])
+                    if "tags" in details and isinstance(details["tags"], list):    # This checks if the 'tags' exist in details. 
+                        if tag.lower() in [a.lower() for a in details["tags"]]: #  converts the info in lowercase. a is the loop variable, allowing the comprehension to iterate through it.
+                                if details["stock"] > 0:        # If the stocks of items with tags are more than 0, only then will they print in the terminal.
+                                        tags_align = ', '.join(details["tags"])         # ', '.join(), joins the list of tags (if there are multiple tags for one item) making them a single string, seperated by the comma and space. 
                                         print(f"                       \033[1;7;34;100m {details['name']:<{filterborder}} --- {tags_align:<{filterborder}}       \033[0m\n")
                                         Items_found = True
         DesignBOTTOM()
@@ -1274,7 +1164,7 @@ def FactsFilter(tag):
                 print(f"\033[1;7;36;96mNo items found...\033[0m")
 
 
-def ShowFilter():
+def ShowFilter():       # The define function that displays the different filter options, also used to call the different functions that contain the tags: Vegan, Gluten Free, and Sugar Free. 
         TheCornerLogoGrey()
         DesignTOP()
         print ("""\
@@ -1306,11 +1196,11 @@ def ShowFilter():
         DesignBOTTOM()
 
 
-def displayUSD(SymbolOfCurrency, ConRate):
+def displayUSD(SymbolOfCurrency, ConRate):      # Define function dedicated for the Dollar Currency. Rates and Symbols all set to the Dollar (USD).
         TheCornerLogoGrey()
         CategorySelection()
 
-        selectUSD  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
+        selectUSD  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip() # User is asked to select from the options displayed in the Category Selection function.
         print(f"\n\nUser Selected -> {selectUSD}")
 
         if selectUSD == "1" or selectUSD.lower() in "snacks":
@@ -1320,23 +1210,23 @@ def displayUSD(SymbolOfCurrency, ConRate):
         elif selectUSD == "3" or selectUSD.lower() in "specialties":
                 SpecDisplay("USD", symbols["USD"], rates["USD"])
         elif selectUSD == "4" or selectUSD.lower() in "view cart":
-                viewcart(SymbolOfCurrency, ConRate)
+                viewcart(SymbolOfCurrency, ConRate)             # User can view their cart by picking the number 4 or typing view cart.
         elif selectUSD == "5" or selectUSD.lower() in "checkout":
-                checkout(SymbolOfCurrency, ConRate)
+                checkout(SymbolOfCurrency, ConRate)              # User can checkout by picking the number 5 or typing checkout.
         elif selectUSD == "0" or selectUSD.lower() in "reset currency":
-                MainCurrencyDisplay()
+                MainCurrencyDisplay(SymbolOfCurrency, ConRate)
         elif selectUSD == selectUSD.lower() in "filters":
-                ShowFilter()
+                ShowFilter()                             # User can use the filter option if they type down "filter"
         else: 
                 print ("Please ensure to select an option to continue")
                 displayUSD(SymbolOfCurrency, ConRate)
 
 
-def displayGBP(SymbolOfCurrency, ConRate):
+def displayGBP(SymbolOfCurrency, ConRate):      # Define function dedicated for the Pounds Currency. Rates and Symbols all set to the Pounds (GBP).
         TheCornerLogoGrey()
         CategorySelection()
 
-        selectGBP  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
+        selectGBP  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip() # User is asked to select from the options displayed in the Category Selection function.
         print(f"\n\nUser Selected -> {selectGBP}")
         if selectGBP == "1" or selectGBP.lower() in "snacks":
                 SnacksDisplay("GBP", symbols["GBP"], rates["GBP"])
@@ -1345,23 +1235,23 @@ def displayGBP(SymbolOfCurrency, ConRate):
         elif selectGBP == "3" or selectGBP.lower() in "specialties":
                 SpecDisplay("GBP", symbols["GBP"], rates["GBP"])
         elif selectGBP == "4" or selectGBP.lower() in "view cart":
-                viewcart(SymbolOfCurrency, ConRate)
+                viewcart(SymbolOfCurrency, ConRate)     # User can view their cart by picking the number 4 or typing view cart.
         elif selectGBP == "5" or selectGBP.lower() in "checkout":
-                checkout(SymbolOfCurrency, ConRate)
+                checkout(SymbolOfCurrency, ConRate)     # User can checkout by picking the number 5 or typing checkout.
         elif selectGBP == "0" or selectGBP.lower() in "reset currency":
-                MainCurrencyDisplay()
+                MainCurrencyDisplay(SymbolOfCurrency, ConRate)
         elif selectGBP == selectGBP.lower() in "filters":
-                ShowFilter()
+                ShowFilter()                                    # User can use the filter option if they type down "filter"
         else: 
                 print ("Please ensure to select an option to continue")
                 displayGBP(SymbolOfCurrency, ConRate)
 
 
-def displayAED(SymbolOfCurrency, ConRate):
+def displayAED(SymbolOfCurrency, ConRate):      # Define function dedicated for the Dirhams Currency. Rates and Symbols all set to the Dirhams (AED).
         TheCornerLogoGrey()
         CategorySelection()
 
-        selectAED  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
+        selectAED  = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip() # User is asked to select from the options displayed in the Category Selection function.
         print(f"\n\nUser Selected -> {selectAED}")
         if selectAED == "1" or selectAED.lower() in "snacks":
                 SnacksDisplay("AED", symbols["AED"], rates["AED"])
@@ -1370,13 +1260,13 @@ def displayAED(SymbolOfCurrency, ConRate):
         elif selectAED == "3" or selectAED.lower() in "specialties":
                 SpecDisplay("AED", symbols["AED"], rates["AED"])
         elif selectAED == "4" or selectAED.lower() in "view cart":
-                viewcart(SymbolOfCurrency, ConRate)
+                viewcart(SymbolOfCurrency, ConRate)     # User can view their cart by picking the number 4 or typing view cart.
         elif selectAED == "5" or selectAED.lower() in "checkout":
-                checkout(SymbolOfCurrency, ConRate)
+                checkout(SymbolOfCurrency, ConRate)     # User can checkout by picking the number 5 or typing checkout.
         elif selectAED == "0" or selectAED.lower() in "reset currency":
-                MainCurrencyDisplay()
+                MainCurrencyDisplay(SymbolOfCurrency, ConRate)
         elif selectAED == selectAED.lower() in "filters":
-                ShowFilter()
+                ShowFilter()                             # User can use the filter option if they type down "filter"
         else: 
                 print ("Please ensure to select an option to continue")
                 displayAED(SymbolOfCurrency, ConRate)
@@ -1387,7 +1277,7 @@ def SnacksDisplay(codes, symbols, rates):
         TheCornerLogoGrey()
         Subcategory_Snacks()
         
-        selectUSD = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
+        selectUSD = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()  # Once in the Snacks category, user gets to pick from the 3 subcategories.
         print(f"\n\nUser Selected -> {selectUSD}")
 
         if selectUSD == "1" or selectUSD.lower() in "chocolate bars":
@@ -1397,7 +1287,7 @@ def SnacksDisplay(codes, symbols, rates):
         elif selectUSD == "3" or selectUSD.lower() in "candy":
                 candy_snacks_4(codes, symbols, rates)
         elif selectUSD == "0" or selectUSD.lower() in "exit":
-                MainCurrencyDisplay(symbols, rates)
+                MainCurrencyDisplay(symbols, rates)     # Or they can return back to the main page
         else: 
                 print ("Please ensure to select an option to continue")
                 SnacksDisplay(codes, symbols, rates)
@@ -1408,7 +1298,7 @@ def DrinksDisplay(codes, symbols, rates):
         TheCornerLogoGrey()
         Subcategory_Drinks()
         
-        selectUSD = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
+        selectUSD = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()  # Once in the Drinks category, user gets to pick from the 3 subcategories.
         print(f"\n\nUser Selected -> {selectUSD}")
 
         if selectUSD == "1" or selectUSD.lower() in "water":
@@ -1417,10 +1307,8 @@ def DrinksDisplay(codes, symbols, rates):
                 EnergyDrink_drinks_2(codes, symbols, rates)
         elif selectUSD == "3" or selectUSD.lower() in "soda & soft drinks" "soda and soft drinks":
                 SodaSoftDrinks_drinks_3(codes, symbols, rates)
-        elif selectUSD == "4" or selectUSD.lower() in "ice tea":
-                IceTea_drinks_5(codes, symbols, rates)
         elif selectUSD == "0" or selectUSD.lower() in "exit":
-                MainCurrencyDisplay(symbols, rates)
+                MainCurrencyDisplay(symbols, rates)     # Or they can return back to the main page
         else: 
                 print ("Please ensure to select an option to continue")
                 DrinksDisplay(codes, symbols, rates)
@@ -1431,8 +1319,8 @@ def SpecDisplay(codes, symbols, rates):
         TheCornerLogoGrey()
         Subcategory_Spec()
 
-        selectSpec = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()
-        print(f"\n\nUser Selected -> {selectSpec}")
+        selectSpec = ( " " * 40 + input ( " " * 40 + "\033[1;107;90mYOUR SELECTION:\033[0m ") ).strip()  # Once in the Specialties category, user gets to pick from the 4 subcategories.
+        print(f"\n\nUser Selected -> {selectSpec}")                                                      
 
         if selectSpec == "1" or selectSpec.lower() in "healthy options":
                 HealthyOptions_spec_1(codes, symbols, rates)
@@ -1443,26 +1331,13 @@ def SpecDisplay(codes, symbols, rates):
         elif selectSpec == "4" or selectSpec.lower() in "dried fruit packets":
                 DriedFruitPackets_spec_5(codes, symbols, rates)
         elif selectSpec == "0" or selectSpec.lower() in "exit":
-                MainCurrencyDisplay(symbols, rates)
+                MainCurrencyDisplay(symbols, rates)     # Or they can return back to the main page
         else: 
                 print ("Please ensure to select an option to continue")
                 SpecDisplay(codes, symbols, rates)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-SymbolOfCurrency = "$"
+SymbolOfCurrency = "$"  
 
 rates = {
         "AED" : 3.67,
@@ -1470,10 +1345,4 @@ rates = {
         "GBP" : 0.8,
 }
 
-MainCurrencyDisplay(SymbolOfCurrency, rates)
-
-
-
-
-
-
+MainCurrencyDisplay(SymbolOfCurrency, rates)    # Main function called to start the vending machine.
