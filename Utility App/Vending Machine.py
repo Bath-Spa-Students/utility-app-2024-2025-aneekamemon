@@ -487,7 +487,7 @@ def EnergyDrink_drinks_2(CurrencyCode, SymbolOfCurrency, ConRate):      # Define
                                         AdditionalOrderCODE = random.choice(CandyAvailable)
                                         SelectedDrinkCB = Candy[AdditionalOrderCODE]
                                         ConvertedAddItem = round(SelectedDrinkCB["price"] * ConRate, 2)                                        
-                                        print(f"\n\n\033[1;7;34;94mYour Drink is: {SelectedDrinkCB['name']} which costs {ConvertedAddItem:.2f} {SymbolOfCurrency} \033[0m")
+                                        print(f"\n\n\033[1;7;34;94mYour Item% is: {SelectedDrinkCB['name']} which costs {ConvertedAddItem:.2f} {SymbolOfCurrency} \033[0m")
                                         DrinkAMOUNT = int(input(f"\n\n\033[1;7;34;94m Keeping in mind that the available stock is {SelectedDrinkCB['stock']}. Please enter the amount of {SelectedDrinkCB['name']} you would like to purchase: \033[0m"))
                                         print(f"\n\n\033[1;7;34;94mYour Item is: {SelectedDrinkCB['name']} which costs {ConvertedAddItem:.2f} {SymbolOfCurrency} \n\n\033[0m")
                                         if DrinkAMOUNT <= SelectedDrinkCB["stock"]:
