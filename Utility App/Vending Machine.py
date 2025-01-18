@@ -1,9 +1,10 @@
 
 # Vending Machine - Aneeka Memon
 
-# The title for the vending machine 
+# The title for the Vending Machine. 
 
-# This design has been taken from the ASCII art webpage
+# This design, alongside 'the corner' logo have been taken from the ASCII art webpage. 
+# Link: https://patorjk.com/software/taag/#p=display&f=The%20Edge&t=Type%20Something%20
 
 print ("\n\n")      # Creating space for a cleaner look...
 
@@ -1163,7 +1164,8 @@ def FactsFilter(tag):           # The filter system which showcases the nutritio
                 print(f"\033[1;7;36;96mNo items found...\033[0m")
 
 
-def ShowFilter():       # The define function that displays the different filter options, also used to call the different functions that contain the tags: Vegan, Gluten Free, and Sugar Free. 
+def ShowFilter():
+  while True:       # The define function that displays the different filter options, also used to call the different functions that contain the tags: Vegan, Gluten Free, and Sugar Free. 
         TheCornerLogoGrey()
         DesignTOP()
         print ("""\
@@ -1183,7 +1185,7 @@ def ShowFilter():       # The define function that displays the different filter
 """)
         UserFilter = input("\n\n\033[1;7;36;96m Select a Filter to observe nutritional information of our products: \033[0m").strip().lower()
         if UserFilter == "0" or UserFilter == "exit":
-                CategorySelection()
+                break
         elif UserFilter == "1" or UserFilter == "vegan":
                 FactsFilter("Vegan")
         elif UserFilter == "2" or UserFilter == "gluten free":
@@ -1286,7 +1288,7 @@ def SnacksDisplay(codes, symbols, rates):
         elif selectUSD == "3" or selectUSD.lower() in "candy":
                 candy_snacks_4(codes, symbols, rates)
         elif selectUSD == "0" or selectUSD.lower() in "exit":
-                MainCurrencyDisplay(symbols, rates)     # Or they can return back to the main page
+                CategorySelection(symbols, rates)     # Or they can return back to the main page
         else: 
                 print ("Please ensure to select an option to continue")
                 SnacksDisplay(codes, symbols, rates)
@@ -1307,7 +1309,7 @@ def DrinksDisplay(codes, symbols, rates):
         elif selectUSD == "3" or selectUSD.lower() in "soda & soft drinks" "soda and soft drinks":
                 SodaSoftDrinks_drinks_3(codes, symbols, rates)
         elif selectUSD == "0" or selectUSD.lower() in "exit":
-                MainCurrencyDisplay(symbols, rates)     # Or they can return back to the main page
+                CategorySelection(symbols, rates)     # Or they can return back to the main page
         else: 
                 print ("Please ensure to select an option to continue")
                 DrinksDisplay(codes, symbols, rates)
@@ -1330,7 +1332,7 @@ def SpecDisplay(codes, symbols, rates):
         elif selectSpec == "4" or selectSpec.lower() in "dried fruit packets":
                 DriedFruitPackets_spec_5(codes, symbols, rates)
         elif selectSpec == "0" or selectSpec.lower() in "exit":
-                MainCurrencyDisplay(symbols, rates)     # Or they can return back to the main page
+                CategorySelection(symbols, rates)     # Or they can return back to the main page
         else: 
                 print ("Please ensure to select an option to continue")
                 SpecDisplay(codes, symbols, rates)
