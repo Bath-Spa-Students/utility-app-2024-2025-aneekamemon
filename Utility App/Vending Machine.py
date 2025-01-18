@@ -1054,7 +1054,7 @@ def checkout(SymbolOfCurrency, ConRate):
                         print("""\n                                                  1. \033[1;7;32;92m Retry \033[0m""")       # 2 options are provided to the user, to either retry or cancel payment in cash.
                         print("""\n                                                  2. \033[1;7;32;92m Cancel \033[0m""")
                         Try_Again = input("\n          \033[1;7;32;91m Would you like to re-enter a different amount or cancel entirely: \033[0m").strip().lower()
-                        if Try_Again.lower() in "Cancel Payment":       # If payment is canceled then the loop breaks
+                        if Try_Again.lower() == "2" or Try_Again.lower() in "Cancel Payment":       # If payment is canceled then the loop breaks
                                 print("\n\033[1;7;34;47mYour payment has been canceled.\033[0m")
                                 break   # Loop ends here.
                 
